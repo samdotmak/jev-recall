@@ -1,0 +1,30 @@
+[project]
+name = "jev-recall"
+version = "0.1.0"
+description = "Filter an AI assistant's memories down to the ones that matter, using TypeSafe's Jev model."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Samarth Makhija" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.8.12,<0.9.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+bench = [
+    "anthropic>=1.7.0",
+    "fastembed>=0.8.0",
+    "numpy>=2.4.6",
+    "openai>=3.16.2",
+    "rank-bm25>=0.2.2",
+    "rich>=15.0.0",
+]
+dev = [
+    "pytest>=9.1.1",
+]

@@ -1,0 +1,243 @@
+# id | text     (one memory per line; the assistant's long-term store about "User")
+# ---- key facts (gold for some scenario) ----
+dad_stent | User's dad had a cardiac stent put in last March, and his cardiologist has him on a strict low-sodium diet.
+mom_wheelchair | User's mom has used a wheelchair since her hip surgery in 2023, so anywhere she goes needs step-free access.
+ipo_quiet | Northwind confidentially filed for its IPO in August 2026. Legal told every employee not to make public statements about how the company is performing until the filing goes public.
+pregnant | User is pregnant, due December 20, 2026. Their OB said no flying after 36 weeks.
+biscuit_anxiety | Biscuit, User's rescue terrier, has severe separation anxiety; the vet says he shouldn't be left alone for more than 4 hours at a stretch.
+house_closing | User and Sam close on their house in Bernal Heights on Nov 15 and plan to move in the first week of December.
+budget_flag | User asked me to flag any purchase over $500 until the house closes, since all their cash is going to closing costs.
+card_stolen | User's Chase Sapphire, the card they use for household bills, was reported stolen on Sept 3; the replacement arrives Sept 24.
+sam_h1b | Sam is on an H-1B visa sponsored by Stripe.
+db_freeze | Northwind froze production database changes through Oct 5 while auditors snapshot the books for the IPO; any schema migration needs the CFO's sign-off.
+party_guests | Guest list for the Saturday Sept 26 dinner party: Priya, Leo, Dana and Marcus.
+leo_allergy | Leo has a severe tree-nut allergy and carries an EpiPen.
+car_shop | User's Subaru is at the mechanic for a transmission repair until Friday, Sept 25.
+sober | User has been sober since January 2025 and prefers plans that aren't centered on drinking.
+theo_play | Theo's school play is Thursday, Sept 24 at 6pm; User promised him they'd be in the front row.
+parental_leave | User's parental leave runs from Dec 1, 2026 through the end of March 2027.
+# ---- acceptable / useful-but-not-required ----
+parents_wc | User's parents live in Walnut Creek, about 40 minutes from the city.
+dad_kokkari | User took Dad to Kokkari for his birthday last year; he raved about the lamb chops.
+linkedin_style | User likes LinkedIn posts short and plain: no emojis, no hashtags.
+united_aisle | User prefers United and an aisle seat on domestic flights.
+sam_family_tgiving | Sam's family hosts Thanksgiving in Evanston every year.
+united_miles | User has 82,000 United miles that expire in January.
+bh_card | User's B&H account is set up with the Amex ending 1009.
+accounts_table | The accounts table has about 40M rows; the last migration on it took 25 minutes with an online schema change tool.
+ship_command | User deploys to production with the /ship command in Slack.
+lisbon_budget | User's budget for the Lisbon trip is around $300 a night.
+party_menu | Dinner party menu so far: braised short ribs and polenta; Dana is bringing wine.
+vet_sanmateo | Biscuit's vet is Dr. Ortiz at Peninsula Pet Care in San Mateo.
+dive_cert | User got PADI Advanced Open Water certified in Koh Tao in 2022.
+belize_dates | The anniversary trip to Belize is Oct 10–15, staying on Caye Caulker.
+seasick | User gets seasick on small boats and takes Dramamine beforehand.
+dana_manager | Dana is User's manager, VP of Product at Northwind.
+lease_deadline | User's apartment lease renewal decision is due Sept 30; rent is $4,800 a month.
+landlord | User's landlord is Mrs. Huang; she prefers texts over email.
+stripe_friends | User's closest friends from their Stripe days are Anika, Rafael and Jun.
+# ---- decoys: share words/topic with a request but don't matter ----
+sam_bday_nopa | Sam's birthday dinner in May was at Nopa; a table for 8 had to be booked three weeks out.
+offsite_dinner | User booked a table for 6 at State Bird Provisions for the team offsite dinner on Sept 10.
+theo_bday | Theo's 8th birthday party is Oct 17 at the Exploratorium.
+birthday_lunch | Northwind does a birthday lunch for everyone with a birthday that month on the last Friday.
+seriesc_post | User's LinkedIn post about the Series C got about 40,000 impressions.
+q3_okr | User's Q3 OKR: their team owns activation rate, with a target of 35%.
+looker_dash | The revenue dashboard User checks is in Looker under "Exec Weekly".
+chicago_april | User flew to Chicago in April for a board meeting; the O'Hare connection was a mess.
+tgiving_2025 | Thanksgiving 2025: User cooked the turkey for the first time and it took five hours.
+palisades | User skied at Palisades Tahoe in February 2025 and rented gear at the base.
+tahoe_cabin | The Tahoe cabin "Pine Hollow" on Airbnb cost $420 a night in 2024.
+farmers_market | On Sundays User usually goes to the Ferry Building farmers market around 9am.
+fuji | User shoots on a Fujifilm X-T5 and loves the film simulations.
+street_photo | User mostly does street photography in the Mission and Chinatown.
+plumber_ray | User's plumber is Ray at Mission Plumbing; he fixed the kitchen sink in June for $180.
+water_heater | The water heater is a 50-gallon Rheem installed in 2014.
+autopay | Utilities are on autopay on the 1st of each month.
+sam_film | Sam is an amateur photographer who mostly shoots film portraits.
+parks_wedding | The Parks, User's neighbors at 412, are getting married Oct 24 at the Presidio.
+invoice_template | User's invoice template is in Google Drive under Finance/Invoices.
+priya_backend | Priya is Northwind's backend lead and prefers squash merges.
+alfama | User stayed in an Airbnb in Alfama in 2019 with a rooftop terrace and loved it.
+portuguese | User wants to learn some basic Portuguese before the Lisbon trip.
+porto_casa | The Porto Airbnb "Casa Ribeira" had great reviews but sat on a noisy street.
+tartine_bun | Tartine's morning bun is Theo's favorite pastry.
+tartine_cake | User ordered a 10-inch chocolate cake from Tartine for Sam's birthday in May.
+costco_renew | User's Costco membership renews in May.
+route_280 | User takes 280 instead of 101 to avoid traffic on the Peninsula.
+belize_blue_hole | User has wanted to see the Great Blue Hole since college.
+dramamine_brand | User prefers the non-drowsy Dramamine.
+yoga_tree | User went to vinyasa classes at Yoga Tree twice a week in 2024.
+pricing_shipped | The pricing page redesign shipped in July.
+q4_okrs_due | User's Q4 OKRs are due Oct 1.
+renters_ins | User's renter's insurance is with Lemonade.
+trivia_night | User's friends do pub trivia on Tuesdays at the Mucky Duck.
+wine_club | Dana runs a wine club that meets monthly.
+investor_list | Northwind's lead investors are Accel and Index.
+stripe_offsite | User used to organize the Stripe team offsites in Napa.
+# ---- filler: everyday memories ----
+coffee | User drinks an oat-milk cortado every morning.
+cilantro | User can't stand cilantro.
+spicy | User loves very spicy food, especially Sichuan.
+sushi_spot | User's favorite sushi place is Omakase on Townsend.
+pizza | Family pizza night is Friday; Theo always wants pepperoni.
+theo_school | Theo is in 2nd grade at Alvarado Elementary.
+theo_soccer | Theo has soccer practice Wednesdays at 4:30 in Dolores Park.
+theo_piano | Theo takes piano lessons on Mondays with Ms. Kato.
+theo_dinos | Theo is obsessed with dinosaurs, especially the Spinosaurus.
+theo_bedtime | Theo's bedtime is 8pm on school nights.
+sam_job | Sam is a staff engineer at Stripe working on payments risk.
+sam_climbing | Sam climbs at Mission Cliffs three times a week.
+sam_coffee | Sam only drinks black drip coffee.
+sam_anniv | User and Sam's anniversary is October 12; they met in 2016.
+sam_sister | Sam's sister Lena lives in Portland with her two kids.
+user_job | User is a senior product manager at Northwind, a B2B analytics startup.
+northwind_office | Northwind's office is at 500 Howard St; User goes in Tuesday through Thursday.
+northwind_size | Northwind has about 320 employees.
+standup | User's team standup is at 9:45am daily.
+one_on_one | User's 1:1 with Dana is Mondays at 2pm.
+jira | User's team tracks work in Linear, not Jira.
+slack_status | User sets Slack to Do Not Disturb after 7pm.
+calendar_pref | User likes meetings batched in the afternoon and mornings kept for focus time.
+email_tone | User prefers emails short and direct, signed "— A".
+running | User used to run the SF Half every July.
+podcasts | User listens to Acquired and Hard Fork.
+books | User is reading "The Power Broker" and is about halfway through.
+music | User likes Khruangbin and old Motown.
+nyt_games | User does the NYT Connections puzzle every morning.
+phone | User has an iPhone 16 Pro.
+laptop | User's work laptop is a 14-inch MacBook Pro.
+bank | User banks with Chase; Sam banks with Schwab.
+amex | User's Amex ending 1009 is used for travel and online shopping.
+netflix | The family shares one Netflix account on Sam's card.
+spotify | User has a Spotify family plan.
+gym | User has a ClassPass subscription that renews on the 5th.
+doctor | User's primary care doctor is Dr. Patel at One Medical.
+dentist | User's dentist is Dr. Lee on Clement St; last cleaning was in March.
+eye_doctor | User wears contacts, -3.25 in both eyes.
+glasses | User's backup glasses are tortoiseshell Warby Parkers.
+blood_type | User's blood type is O positive.
+flu_shot | The family usually gets flu shots at the Walgreens on Castro.
+haircut | User gets a haircut every 6 weeks at Barber Lounge.
+car_insurance | Car insurance is with Geico; renewal in February.
+subaru | User drives a 2019 Subaru Outback.
+parking | User's building has one assigned parking spot, #14.
+bike | User has an e-bike for short trips around the Mission.
+clipper | User has a Clipper card for Muni and BART.
+apartment | User currently rents a 2-bedroom in the Mission on Valencia St.
+neighbors | The upstairs neighbors have a toddler and are loud on weekend mornings.
+plants | User keeps a monstera and three pothos; they need water every Sunday.
+cleaner | A cleaner, Rosa, comes every other Friday.
+laundry | User sends laundry out to Clean Rite on Mondays.
+groceries | Groceries are delivered from Rainbow Grocery on Sunday evenings.
+meal_kit | User cancelled their Blue Apron subscription in March.
+cooking | User is learning to make fresh pasta.
+coffee_maker | The espresso machine is a Breville Barista Express.
+biscuit_food | Biscuit eats Orijen dry food, 1 cup twice a day.
+biscuit_walker | Biscuit's dog walker, Tom, comes at noon on weekdays.
+biscuit_age | Biscuit is 6 years old; they adopted him in 2021.
+biscuit_park | Biscuit's favorite spot is Fort Funston.
+travel_japan | User went to Japan in spring 2024 and wants to go back to Kyoto.
+travel_mexico | User and Sam went to Oaxaca for New Year's 2025.
+passport | User's passport expires in 2031.
+global_entry | User has Global Entry; Sam doesn't.
+hotel_pref | User prefers boutique hotels over big chains.
+tsa | User always gets to SFO 90 minutes before domestic flights.
+airbnb_pref | User cares most about a real kitchen and fast Wi-Fi in rentals.
+car_rental | User uses Hertz Gold for car rentals.
+timezone | User is in Pacific Time.
+birthday_user | User's birthday is April 3.
+dad_name | User's dad is named Robert; everyone calls him Bob.
+mom_name | User's mom is named Linda; she was a high-school chemistry teacher.
+dad_golf | Dad plays golf every Wednesday with his old coworkers.
+dad_70 | Dad turns 70 on October 3, 2026.
+mom_garden | Mom's roses have won ribbons at the county fair.
+sister | User's younger sister Maya lives in Brooklyn and works in publishing.
+maya_visit | Maya is visiting for a week in early November.
+college | User went to UCLA and studied economics.
+mba | User did an MBA at Kellogg.
+languages | User speaks English and conversational Spanish.
+volunteering | User volunteers at the SF-Marin Food Bank once a month.
+donation | User gives monthly to KQED.
+voting | User is registered to vote in San Francisco.
+taxes | User and Sam file taxes jointly; their CPA is Karen Wu.
+retirement | User contributes the max to their 401(k).
+stocks | User holds Northwind options that vest monthly.
+crypto | User sold all their crypto in 2022.
+fsa | User has a dependent-care FSA for Theo's after-school program.
+after_school | Theo goes to after-school at the JCC until 5:30.
+babysitter | The go-to babysitter is Emma, a student at USF, $25 an hour.
+pediatrician | Theo's pediatrician is Dr. Gomez at UCSF.
+theo_allergy | Theo has no food allergies.
+sam_allergy | Sam is allergic to cats.
+user_allergy | User is mildly allergic to penicillin.
+wine_pref | Sam likes natural wines, especially orange wine.
+tv | User and Sam are watching Severance.
+movies | Family movie night is Saturday, usually something Pixar.
+board_games | User loves Wingspan and Catan.
+camping | The family went camping at Big Sur in August.
+hiking | User's favorite hike is Tennessee Valley to the beach.
+beach | Theo loves Baker Beach.
+museum | The family has a membership at the Cal Academy of Sciences.
+zoo | Theo's class field trip to the SF Zoo was in May.
+halloween | Theo wants to be a Spinosaurus for Halloween.
+christmas | The family alternates Christmas between Walnut Creek and Evanston.
+new_years | User and Sam usually host a small New Year's Eve dinner.
+house_features | The new house has three bedrooms and a small backyard.
+mortgage | The mortgage is with Rocket, a 30-year fixed at 6.1%.
+realtor | Their realtor is Jenny Cho at Compass.
+inspection | The home inspection flagged an old roof; the sellers gave a $15k credit.
+movers | User got a quote from Starving Students movers for $3,200.
+furniture | User wants a new sofa for the house, probably from Article.
+nursery | User is thinking about a sage-green nursery.
+baby_names | User and Sam are torn between the names Nora and Ivy.
+stroller | User has been researching the UPPAbaby Vista stroller.
+baby_class | User and Sam signed up for a childbirth class at CPMC in October.
+hospital | User plans to deliver at CPMC Van Ness.
+pto | User has 12 days of PTO left this year.
+promotion | User is up for promotion to Group PM in the January cycle.
+side_project | User is building a small app for tracking Theo's reading.
+newsletter | User writes a monthly product newsletter for Northwind customers.
+conference | User spoke at SaaStr in 2025 about activation metrics.
+mentor | User mentors two APMs at Northwind.
+recruiting | User is interviewing PM candidates on Thursdays.
+competitor | Northwind's main competitor is Mixpanel.
+tools | User drafts product specs in Notion.
+okr_style | User writes OKRs with no more than three key results each.
+sam_travel | Sam travels to Stripe's Dublin office twice a year.
+sam_birthday | Sam's birthday is May 18.
+sam_parents | Sam's parents, Joan and Dave, live in Evanston.
+lena_kids | Lena's kids are 5 and 9 and adore Theo.
+pet_insurance | Biscuit has pet insurance through Trupanion.
+biscuit_grooming | Biscuit gets groomed every 8 weeks at Wag Wash.
+biscuit_boarding | When they travel, Biscuit boards at Dogpatch Boarding.
+car_wash | User gets the car washed monthly on Cesar Chavez.
+ev_plan | User wants to switch to an EV after the house purchase.
+solar | The new house already has solar panels.
+internet | Internet at the apartment is Sonic fiber.
+smart_home | User uses HomeKit for the lights.
+alarm | User's alarm is set for 6:45am on weekdays.
+sleep | User has been sleeping badly and blames the upstairs neighbors.
+meditation | User meditates 10 minutes a day with Headspace.
+journaling | User journals on Sunday nights.
+steps | User aims for 8,000 steps a day.
+water | User tries to drink 3 liters of water a day.
+vitamins | User takes prenatal vitamins every morning.
+coffee_limit | User has cut back to one coffee a day.
+tea | In the afternoon User drinks rooibos tea.
+dessert | User's favorite dessert is tiramisu.
+brunch | Sunday brunch spot of choice is Plow in Potrero Hill.
+date_night | User and Sam try to do date night every other Thursday.
+thai | The family's go-to takeout is Thai from Lers Ros.
+burritos | User swears by La Taqueria for burritos.
+farmers_list | At the farmers market User always buys peaches and sourdough.
+gifts | User likes giving experiences rather than things as gifts.
+wrapping | User keeps gift wrap in the hall closet.
+thank_you | User always sends handwritten thank-you notes.
+stationery | User likes Smythson notebooks.
+pens | User writes with a Lamy Safari fountain pen.
+photo_backup | Photos back up to iCloud and a Synology NAS.
+password_mgr | The family uses 1Password.
+two_factor | User uses a YubiKey for work accounts.
+work_travel | User has a work trip to New York planned for late October.
+nyc_hotel | In New York User stays at the Ace Hotel.

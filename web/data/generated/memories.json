@@ -1,0 +1,957 @@
+{
+ "today": "Saturday, September 19, 2026",
+ "memories": [
+  {
+   "id": "dad_stent",
+   "text": "User's dad had a cardiac stent put in last March, and his cardiologist has him on a strict low-sodium diet."
+  },
+  {
+   "id": "mom_wheelchair",
+   "text": "User's mom has used a wheelchair since her hip surgery in 2023, so anywhere she goes needs step-free access."
+  },
+  {
+   "id": "ipo_quiet",
+   "text": "Northwind confidentially filed for its IPO in August 2026. Legal told every employee not to make public statements about how the company is performing until the filing goes public."
+  },
+  {
+   "id": "pregnant",
+   "text": "User is pregnant, due December 20, 2026. Their OB said no flying after 36 weeks."
+  },
+  {
+   "id": "biscuit_anxiety",
+   "text": "Biscuit, User's rescue terrier, has severe separation anxiety; the vet says he shouldn't be left alone for more than 4 hours at a stretch."
+  },
+  {
+   "id": "house_closing",
+   "text": "User and Sam close on their house in Bernal Heights on Nov 15 and plan to move in the first week of December."
+  },
+  {
+   "id": "budget_flag",
+   "text": "User asked me to flag any purchase over $500 until the house closes, since all their cash is going to closing costs."
+  },
+  {
+   "id": "card_stolen",
+   "text": "User's Chase Sapphire, the card they use for household bills, was reported stolen on Sept 3; the replacement arrives Sept 24."
+  },
+  {
+   "id": "sam_h1b",
+   "text": "Sam is on an H-1B visa sponsored by Stripe."
+  },
+  {
+   "id": "db_freeze",
+   "text": "Northwind froze production database changes through Oct 5 while auditors snapshot the books for the IPO; any schema migration needs the CFO's sign-off."
+  },
+  {
+   "id": "party_guests",
+   "text": "Guest list for the Saturday Sept 26 dinner party: Priya, Leo, Dana and Marcus."
+  },
+  {
+   "id": "leo_allergy",
+   "text": "Leo has a severe tree-nut allergy and carries an EpiPen."
+  },
+  {
+   "id": "car_shop",
+   "text": "User's Subaru is at the mechanic for a transmission repair until Friday, Sept 25."
+  },
+  {
+   "id": "sober",
+   "text": "User has been sober since January 2025 and prefers plans that aren't centered on drinking."
+  },
+  {
+   "id": "theo_play",
+   "text": "Theo's school play is Thursday, Sept 24 at 6pm; User promised him they'd be in the front row."
+  },
+  {
+   "id": "parental_leave",
+   "text": "User's parental leave runs from Dec 1, 2026 through the end of March 2027."
+  },
+  {
+   "id": "parents_wc",
+   "text": "User's parents live in Walnut Creek, about 40 minutes from the city."
+  },
+  {
+   "id": "dad_kokkari",
+   "text": "User took Dad to Kokkari for his birthday last year; he raved about the lamb chops."
+  },
+  {
+   "id": "linkedin_style",
+   "text": "User likes LinkedIn posts short and plain: no emojis, no hashtags."
+  },
+  {
+   "id": "united_aisle",
+   "text": "User prefers United and an aisle seat on domestic flights."
+  },
+  {
+   "id": "sam_family_tgiving",
+   "text": "Sam's family hosts Thanksgiving in Evanston every year."
+  },
+  {
+   "id": "united_miles",
+   "text": "User has 82,000 United miles that expire in January."
+  },
+  {
+   "id": "bh_card",
+   "text": "User's B&H account is set up with the Amex ending 1009."
+  },
+  {
+   "id": "accounts_table",
+   "text": "The accounts table has about 40M rows; the last migration on it took 25 minutes with an online schema change tool."
+  },
+  {
+   "id": "ship_command",
+   "text": "User deploys to production with the /ship command in Slack."
+  },
+  {
+   "id": "lisbon_budget",
+   "text": "User's budget for the Lisbon trip is around $300 a night."
+  },
+  {
+   "id": "party_menu",
+   "text": "Dinner party menu so far: braised short ribs and polenta; Dana is bringing wine."
+  },
+  {
+   "id": "vet_sanmateo",
+   "text": "Biscuit's vet is Dr. Ortiz at Peninsula Pet Care in San Mateo."
+  },
+  {
+   "id": "dive_cert",
+   "text": "User got PADI Advanced Open Water certified in Koh Tao in 2022."
+  },
+  {
+   "id": "belize_dates",
+   "text": "The anniversary trip to Belize is Oct 10–15, staying on Caye Caulker."
+  },
+  {
+   "id": "seasick",
+   "text": "User gets seasick on small boats and takes Dramamine beforehand."
+  },
+  {
+   "id": "dana_manager",
+   "text": "Dana is User's manager, VP of Product at Northwind."
+  },
+  {
+   "id": "lease_deadline",
+   "text": "User's apartment lease renewal decision is due Sept 30; rent is $4,800 a month."
+  },
+  {
+   "id": "landlord",
+   "text": "User's landlord is Mrs. Huang; she prefers texts over email."
+  },
+  {
+   "id": "stripe_friends",
+   "text": "User's closest friends from their Stripe days are Anika, Rafael and Jun."
+  },
+  {
+   "id": "sam_bday_nopa",
+   "text": "Sam's birthday dinner in May was at Nopa; a table for 8 had to be booked three weeks out."
+  },
+  {
+   "id": "offsite_dinner",
+   "text": "User booked a table for 6 at State Bird Provisions for the team offsite dinner on Sept 10."
+  },
+  {
+   "id": "theo_bday",
+   "text": "Theo's 8th birthday party is Oct 17 at the Exploratorium."
+  },
+  {
+   "id": "birthday_lunch",
+   "text": "Northwind does a birthday lunch for everyone with a birthday that month on the last Friday."
+  },
+  {
+   "id": "seriesc_post",
+   "text": "User's LinkedIn post about the Series C got about 40,000 impressions."
+  },
+  {
+   "id": "q3_okr",
+   "text": "User's Q3 OKR: their team owns activation rate, with a target of 35%."
+  },
+  {
+   "id": "looker_dash",
+   "text": "The revenue dashboard User checks is in Looker under \"Exec Weekly\"."
+  },
+  {
+   "id": "chicago_april",
+   "text": "User flew to Chicago in April for a board meeting; the O'Hare connection was a mess."
+  },
+  {
+   "id": "tgiving_2025",
+   "text": "Thanksgiving 2025: User cooked the turkey for the first time and it took five hours."
+  },
+  {
+   "id": "palisades",
+   "text": "User skied at Palisades Tahoe in February 2025 and rented gear at the base."
+  },
+  {
+   "id": "tahoe_cabin",
+   "text": "The Tahoe cabin \"Pine Hollow\" on Airbnb cost $420 a night in 2024."
+  },
+  {
+   "id": "farmers_market",
+   "text": "On Sundays User usually goes to the Ferry Building farmers market around 9am."
+  },
+  {
+   "id": "fuji",
+   "text": "User shoots on a Fujifilm X-T5 and loves the film simulations."
+  },
+  {
+   "id": "street_photo",
+   "text": "User mostly does street photography in the Mission and Chinatown."
+  },
+  {
+   "id": "plumber_ray",
+   "text": "User's plumber is Ray at Mission Plumbing; he fixed the kitchen sink in June for $180."
+  },
+  {
+   "id": "water_heater",
+   "text": "The water heater is a 50-gallon Rheem installed in 2014."
+  },
+  {
+   "id": "autopay",
+   "text": "Utilities are on autopay on the 1st of each month."
+  },
+  {
+   "id": "sam_film",
+   "text": "Sam is an amateur photographer who mostly shoots film portraits."
+  },
+  {
+   "id": "parks_wedding",
+   "text": "The Parks, User's neighbors at 412, are getting married Oct 24 at the Presidio."
+  },
+  {
+   "id": "invoice_template",
+   "text": "User's invoice template is in Google Drive under Finance/Invoices."
+  },
+  {
+   "id": "priya_backend",
+   "text": "Priya is Northwind's backend lead and prefers squash merges."
+  },
+  {
+   "id": "alfama",
+   "text": "User stayed in an Airbnb in Alfama in 2019 with a rooftop terrace and loved it."
+  },
+  {
+   "id": "portuguese",
+   "text": "User wants to learn some basic Portuguese before the Lisbon trip."
+  },
+  {
+   "id": "porto_casa",
+   "text": "The Porto Airbnb \"Casa Ribeira\" had great reviews but sat on a noisy street."
+  },
+  {
+   "id": "tartine_bun",
+   "text": "Tartine's morning bun is Theo's favorite pastry."
+  },
+  {
+   "id": "tartine_cake",
+   "text": "User ordered a 10-inch chocolate cake from Tartine for Sam's birthday in May."
+  },
+  {
+   "id": "costco_renew",
+   "text": "User's Costco membership renews in May."
+  },
+  {
+   "id": "route_280",
+   "text": "User takes 280 instead of 101 to avoid traffic on the Peninsula."
+  },
+  {
+   "id": "belize_blue_hole",
+   "text": "User has wanted to see the Great Blue Hole since college."
+  },
+  {
+   "id": "dramamine_brand",
+   "text": "User prefers the non-drowsy Dramamine."
+  },
+  {
+   "id": "yoga_tree",
+   "text": "User went to vinyasa classes at Yoga Tree twice a week in 2024."
+  },
+  {
+   "id": "pricing_shipped",
+   "text": "The pricing page redesign shipped in July."
+  },
+  {
+   "id": "q4_okrs_due",
+   "text": "User's Q4 OKRs are due Oct 1."
+  },
+  {
+   "id": "renters_ins",
+   "text": "User's renter's insurance is with Lemonade."
+  },
+  {
+   "id": "trivia_night",
+   "text": "User's friends do pub trivia on Tuesdays at the Mucky Duck."
+  },
+  {
+   "id": "wine_club",
+   "text": "Dana runs a wine club that meets monthly."
+  },
+  {
+   "id": "investor_list",
+   "text": "Northwind's lead investors are Accel and Index."
+  },
+  {
+   "id": "stripe_offsite",
+   "text": "User used to organize the Stripe team offsites in Napa."
+  },
+  {
+   "id": "coffee",
+   "text": "User drinks an oat-milk cortado every morning."
+  },
+  {
+   "id": "cilantro",
+   "text": "User can't stand cilantro."
+  },
+  {
+   "id": "spicy",
+   "text": "User loves very spicy food, especially Sichuan."
+  },
+  {
+   "id": "sushi_spot",
+   "text": "User's favorite sushi place is Omakase on Townsend."
+  },
+  {
+   "id": "pizza",
+   "text": "Family pizza night is Friday; Theo always wants pepperoni."
+  },
+  {
+   "id": "theo_school",
+   "text": "Theo is in 2nd grade at Alvarado Elementary."
+  },
+  {
+   "id": "theo_soccer",
+   "text": "Theo has soccer practice Wednesdays at 4:30 in Dolores Park."
+  },
+  {
+   "id": "theo_piano",
+   "text": "Theo takes piano lessons on Mondays with Ms. Kato."
+  },
+  {
+   "id": "theo_dinos",
+   "text": "Theo is obsessed with dinosaurs, especially the Spinosaurus."
+  },
+  {
+   "id": "theo_bedtime",
+   "text": "Theo's bedtime is 8pm on school nights."
+  },
+  {
+   "id": "sam_job",
+   "text": "Sam is a staff engineer at Stripe working on payments risk."
+  },
+  {
+   "id": "sam_climbing",
+   "text": "Sam climbs at Mission Cliffs three times a week."
+  },
+  {
+   "id": "sam_coffee",
+   "text": "Sam only drinks black drip coffee."
+  },
+  {
+   "id": "sam_anniv",
+   "text": "User and Sam's anniversary is October 12; they met in 2016."
+  },
+  {
+   "id": "sam_sister",
+   "text": "Sam's sister Lena lives in Portland with her two kids."
+  },
+  {
+   "id": "user_job",
+   "text": "User is a senior product manager at Northwind, a B2B analytics startup."
+  },
+  {
+   "id": "northwind_office",
+   "text": "Northwind's office is at 500 Howard St; User goes in Tuesday through Thursday."
+  },
+  {
+   "id": "northwind_size",
+   "text": "Northwind has about 320 employees."
+  },
+  {
+   "id": "standup",
+   "text": "User's team standup is at 9:45am daily."
+  },
+  {
+   "id": "one_on_one",
+   "text": "User's 1:1 with Dana is Mondays at 2pm."
+  },
+  {
+   "id": "jira",
+   "text": "User's team tracks work in Linear, not Jira."
+  },
+  {
+   "id": "slack_status",
+   "text": "User sets Slack to Do Not Disturb after 7pm."
+  },
+  {
+   "id": "calendar_pref",
+   "text": "User likes meetings batched in the afternoon and mornings kept for focus time."
+  },
+  {
+   "id": "email_tone",
+   "text": "User prefers emails short and direct, signed \"— A\"."
+  },
+  {
+   "id": "running",
+   "text": "User used to run the SF Half every July."
+  },
+  {
+   "id": "podcasts",
+   "text": "User listens to Acquired and Hard Fork."
+  },
+  {
+   "id": "books",
+   "text": "User is reading \"The Power Broker\" and is about halfway through."
+  },
+  {
+   "id": "music",
+   "text": "User likes Khruangbin and old Motown."
+  },
+  {
+   "id": "nyt_games",
+   "text": "User does the NYT Connections puzzle every morning."
+  },
+  {
+   "id": "phone",
+   "text": "User has an iPhone 16 Pro."
+  },
+  {
+   "id": "laptop",
+   "text": "User's work laptop is a 14-inch MacBook Pro."
+  },
+  {
+   "id": "bank",
+   "text": "User banks with Chase; Sam banks with Schwab."
+  },
+  {
+   "id": "amex",
+   "text": "User's Amex ending 1009 is used for travel and online shopping."
+  },
+  {
+   "id": "netflix",
+   "text": "The family shares one Netflix account on Sam's card."
+  },
+  {
+   "id": "spotify",
+   "text": "User has a Spotify family plan."
+  },
+  {
+   "id": "gym",
+   "text": "User has a ClassPass subscription that renews on the 5th."
+  },
+  {
+   "id": "doctor",
+   "text": "User's primary care doctor is Dr. Patel at One Medical."
+  },
+  {
+   "id": "dentist",
+   "text": "User's dentist is Dr. Lee on Clement St; last cleaning was in March."
+  },
+  {
+   "id": "eye_doctor",
+   "text": "User wears contacts, -3.25 in both eyes."
+  },
+  {
+   "id": "glasses",
+   "text": "User's backup glasses are tortoiseshell Warby Parkers."
+  },
+  {
+   "id": "blood_type",
+   "text": "User's blood type is O positive."
+  },
+  {
+   "id": "flu_shot",
+   "text": "The family usually gets flu shots at the Walgreens on Castro."
+  },
+  {
+   "id": "haircut",
+   "text": "User gets a haircut every 6 weeks at Barber Lounge."
+  },
+  {
+   "id": "car_insurance",
+   "text": "Car insurance is with Geico; renewal in February."
+  },
+  {
+   "id": "subaru",
+   "text": "User drives a 2019 Subaru Outback."
+  },
+  {
+   "id": "parking",
+   "text": "User's building has one assigned parking spot, #14."
+  },
+  {
+   "id": "bike",
+   "text": "User has an e-bike for short trips around the Mission."
+  },
+  {
+   "id": "clipper",
+   "text": "User has a Clipper card for Muni and BART."
+  },
+  {
+   "id": "apartment",
+   "text": "User currently rents a 2-bedroom in the Mission on Valencia St."
+  },
+  {
+   "id": "neighbors",
+   "text": "The upstairs neighbors have a toddler and are loud on weekend mornings."
+  },
+  {
+   "id": "plants",
+   "text": "User keeps a monstera and three pothos; they need water every Sunday."
+  },
+  {
+   "id": "cleaner",
+   "text": "A cleaner, Rosa, comes every other Friday."
+  },
+  {
+   "id": "laundry",
+   "text": "User sends laundry out to Clean Rite on Mondays."
+  },
+  {
+   "id": "groceries",
+   "text": "Groceries are delivered from Rainbow Grocery on Sunday evenings."
+  },
+  {
+   "id": "meal_kit",
+   "text": "User cancelled their Blue Apron subscription in March."
+  },
+  {
+   "id": "cooking",
+   "text": "User is learning to make fresh pasta."
+  },
+  {
+   "id": "coffee_maker",
+   "text": "The espresso machine is a Breville Barista Express."
+  },
+  {
+   "id": "biscuit_food",
+   "text": "Biscuit eats Orijen dry food, 1 cup twice a day."
+  },
+  {
+   "id": "biscuit_walker",
+   "text": "Biscuit's dog walker, Tom, comes at noon on weekdays."
+  },
+  {
+   "id": "biscuit_age",
+   "text": "Biscuit is 6 years old; they adopted him in 2021."
+  },
+  {
+   "id": "biscuit_park",
+   "text": "Biscuit's favorite spot is Fort Funston."
+  },
+  {
+   "id": "travel_japan",
+   "text": "User went to Japan in spring 2024 and wants to go back to Kyoto."
+  },
+  {
+   "id": "travel_mexico",
+   "text": "User and Sam went to Oaxaca for New Year's 2025."
+  },
+  {
+   "id": "passport",
+   "text": "User's passport expires in 2031."
+  },
+  {
+   "id": "global_entry",
+   "text": "User has Global Entry; Sam doesn't."
+  },
+  {
+   "id": "hotel_pref",
+   "text": "User prefers boutique hotels over big chains."
+  },
+  {
+   "id": "tsa",
+   "text": "User always gets to SFO 90 minutes before domestic flights."
+  },
+  {
+   "id": "airbnb_pref",
+   "text": "User cares most about a real kitchen and fast Wi-Fi in rentals."
+  },
+  {
+   "id": "car_rental",
+   "text": "User uses Hertz Gold for car rentals."
+  },
+  {
+   "id": "timezone",
+   "text": "User is in Pacific Time."
+  },
+  {
+   "id": "birthday_user",
+   "text": "User's birthday is April 3."
+  },
+  {
+   "id": "dad_name",
+   "text": "User's dad is named Robert; everyone calls him Bob."
+  },
+  {
+   "id": "mom_name",
+   "text": "User's mom is named Linda; she was a high-school chemistry teacher."
+  },
+  {
+   "id": "dad_golf",
+   "text": "Dad plays golf every Wednesday with his old coworkers."
+  },
+  {
+   "id": "dad_70",
+   "text": "Dad turns 70 on October 3, 2026."
+  },
+  {
+   "id": "mom_garden",
+   "text": "Mom's roses have won ribbons at the county fair."
+  },
+  {
+   "id": "sister",
+   "text": "User's younger sister Maya lives in Brooklyn and works in publishing."
+  },
+  {
+   "id": "maya_visit",
+   "text": "Maya is visiting for a week in early November."
+  },
+  {
+   "id": "college",
+   "text": "User went to UCLA and studied economics."
+  },
+  {
+   "id": "mba",
+   "text": "User did an MBA at Kellogg."
+  },
+  {
+   "id": "languages",
+   "text": "User speaks English and conversational Spanish."
+  },
+  {
+   "id": "volunteering",
+   "text": "User volunteers at the SF-Marin Food Bank once a month."
+  },
+  {
+   "id": "donation",
+   "text": "User gives monthly to KQED."
+  },
+  {
+   "id": "voting",
+   "text": "User is registered to vote in San Francisco."
+  },
+  {
+   "id": "taxes",
+   "text": "User and Sam file taxes jointly; their CPA is Karen Wu."
+  },
+  {
+   "id": "retirement",
+   "text": "User contributes the max to their 401(k)."
+  },
+  {
+   "id": "stocks",
+   "text": "User holds Northwind options that vest monthly."
+  },
+  {
+   "id": "crypto",
+   "text": "User sold all their crypto in 2022."
+  },
+  {
+   "id": "fsa",
+   "text": "User has a dependent-care FSA for Theo's after-school program."
+  },
+  {
+   "id": "after_school",
+   "text": "Theo goes to after-school at the JCC until 5:30."
+  },
+  {
+   "id": "babysitter",
+   "text": "The go-to babysitter is Emma, a student at USF, $25 an hour."
+  },
+  {
+   "id": "pediatrician",
+   "text": "Theo's pediatrician is Dr. Gomez at UCSF."
+  },
+  {
+   "id": "theo_allergy",
+   "text": "Theo has no food allergies."
+  },
+  {
+   "id": "sam_allergy",
+   "text": "Sam is allergic to cats."
+  },
+  {
+   "id": "user_allergy",
+   "text": "User is mildly allergic to penicillin."
+  },
+  {
+   "id": "wine_pref",
+   "text": "Sam likes natural wines, especially orange wine."
+  },
+  {
+   "id": "tv",
+   "text": "User and Sam are watching Severance."
+  },
+  {
+   "id": "movies",
+   "text": "Family movie night is Saturday, usually something Pixar."
+  },
+  {
+   "id": "board_games",
+   "text": "User loves Wingspan and Catan."
+  },
+  {
+   "id": "camping",
+   "text": "The family went camping at Big Sur in August."
+  },
+  {
+   "id": "hiking",
+   "text": "User's favorite hike is Tennessee Valley to the beach."
+  },
+  {
+   "id": "beach",
+   "text": "Theo loves Baker Beach."
+  },
+  {
+   "id": "museum",
+   "text": "The family has a membership at the Cal Academy of Sciences."
+  },
+  {
+   "id": "zoo",
+   "text": "Theo's class field trip to the SF Zoo was in May."
+  },
+  {
+   "id": "halloween",
+   "text": "Theo wants to be a Spinosaurus for Halloween."
+  },
+  {
+   "id": "christmas",
+   "text": "The family alternates Christmas between Walnut Creek and Evanston."
+  },
+  {
+   "id": "new_years",
+   "text": "User and Sam usually host a small New Year's Eve dinner."
+  },
+  {
+   "id": "house_features",
+   "text": "The new house has three bedrooms and a small backyard."
+  },
+  {
+   "id": "mortgage",
+   "text": "The mortgage is with Rocket, a 30-year fixed at 6.1%."
+  },
+  {
+   "id": "realtor",
+   "text": "Their realtor is Jenny Cho at Compass."
+  },
+  {
+   "id": "inspection",
+   "text": "The home inspection flagged an old roof; the sellers gave a $15k credit."
+  },
+  {
+   "id": "movers",
+   "text": "User got a quote from Starving Students movers for $3,200."
+  },
+  {
+   "id": "furniture",
+   "text": "User wants a new sofa for the house, probably from Article."
+  },
+  {
+   "id": "nursery",
+   "text": "User is thinking about a sage-green nursery."
+  },
+  {
+   "id": "baby_names",
+   "text": "User and Sam are torn between the names Nora and Ivy."
+  },
+  {
+   "id": "stroller",
+   "text": "User has been researching the UPPAbaby Vista stroller."
+  },
+  {
+   "id": "baby_class",
+   "text": "User and Sam signed up for a childbirth class at CPMC in October."
+  },
+  {
+   "id": "hospital",
+   "text": "User plans to deliver at CPMC Van Ness."
+  },
+  {
+   "id": "pto",
+   "text": "User has 12 days of PTO left this year."
+  },
+  {
+   "id": "promotion",
+   "text": "User is up for promotion to Group PM in the January cycle."
+  },
+  {
+   "id": "side_project",
+   "text": "User is building a small app for tracking Theo's reading."
+  },
+  {
+   "id": "newsletter",
+   "text": "User writes a monthly product newsletter for Northwind customers."
+  },
+  {
+   "id": "conference",
+   "text": "User spoke at SaaStr in 2025 about activation metrics."
+  },
+  {
+   "id": "mentor",
+   "text": "User mentors two APMs at Northwind."
+  },
+  {
+   "id": "recruiting",
+   "text": "User is interviewing PM candidates on Thursdays."
+  },
+  {
+   "id": "competitor",
+   "text": "Northwind's main competitor is Mixpanel."
+  },
+  {
+   "id": "tools",
+   "text": "User drafts product specs in Notion."
+  },
+  {
+   "id": "okr_style",
+   "text": "User writes OKRs with no more than three key results each."
+  },
+  {
+   "id": "sam_travel",
+   "text": "Sam travels to Stripe's Dublin office twice a year."
+  },
+  {
+   "id": "sam_birthday",
+   "text": "Sam's birthday is May 18."
+  },
+  {
+   "id": "sam_parents",
+   "text": "Sam's parents, Joan and Dave, live in Evanston."
+  },
+  {
+   "id": "lena_kids",
+   "text": "Lena's kids are 5 and 9 and adore Theo."
+  },
+  {
+   "id": "pet_insurance",
+   "text": "Biscuit has pet insurance through Trupanion."
+  },
+  {
+   "id": "biscuit_grooming",
+   "text": "Biscuit gets groomed every 8 weeks at Wag Wash."
+  },
+  {
+   "id": "biscuit_boarding",
+   "text": "When they travel, Biscuit boards at Dogpatch Boarding."
+  },
+  {
+   "id": "car_wash",
+   "text": "User gets the car washed monthly on Cesar Chavez."
+  },
+  {
+   "id": "ev_plan",
+   "text": "User wants to switch to an EV after the house purchase."
+  },
+  {
+   "id": "solar",
+   "text": "The new house already has solar panels."
+  },
+  {
+   "id": "internet",
+   "text": "Internet at the apartment is Sonic fiber."
+  },
+  {
+   "id": "smart_home",
+   "text": "User uses HomeKit for the lights."
+  },
+  {
+   "id": "alarm",
+   "text": "User's alarm is set for 6:45am on weekdays."
+  },
+  {
+   "id": "sleep",
+   "text": "User has been sleeping badly and blames the upstairs neighbors."
+  },
+  {
+   "id": "meditation",
+   "text": "User meditates 10 minutes a day with Headspace."
+  },
+  {
+   "id": "journaling",
+   "text": "User journals on Sunday nights."
+  },
+  {
+   "id": "steps",
+   "text": "User aims for 8,000 steps a day."
+  },
+  {
+   "id": "water",
+   "text": "User tries to drink 3 liters of water a day."
+  },
+  {
+   "id": "vitamins",
+   "text": "User takes prenatal vitamins every morning."
+  },
+  {
+   "id": "coffee_limit",
+   "text": "User has cut back to one coffee a day."
+  },
+  {
+   "id": "tea",
+   "text": "In the afternoon User drinks rooibos tea."
+  },
+  {
+   "id": "dessert",
+   "text": "User's favorite dessert is tiramisu."
+  },
+  {
+   "id": "brunch",
+   "text": "Sunday brunch spot of choice is Plow in Potrero Hill."
+  },
+  {
+   "id": "date_night",
+   "text": "User and Sam try to do date night every other Thursday."
+  },
+  {
+   "id": "thai",
+   "text": "The family's go-to takeout is Thai from Lers Ros."
+  },
+  {
+   "id": "burritos",
+   "text": "User swears by La Taqueria for burritos."
+  },
+  {
+   "id": "farmers_list",
+   "text": "At the farmers market User always buys peaches and sourdough."
+  },
+  {
+   "id": "gifts",
+   "text": "User likes giving experiences rather than things as gifts."
+  },
+  {
+   "id": "wrapping",
+   "text": "User keeps gift wrap in the hall closet."
+  },
+  {
+   "id": "thank_you",
+   "text": "User always sends handwritten thank-you notes."
+  },
+  {
+   "id": "stationery",
+   "text": "User likes Smythson notebooks."
+  },
+  {
+   "id": "pens",
+   "text": "User writes with a Lamy Safari fountain pen."
+  },
+  {
+   "id": "photo_backup",
+   "text": "Photos back up to iCloud and a Synology NAS."
+  },
+  {
+   "id": "password_mgr",
+   "text": "The family uses 1Password."
+  },
+  {
+   "id": "two_factor",
+   "text": "User uses a YubiKey for work accounts."
+  },
+  {
+   "id": "work_travel",
+   "text": "User has a work trip to New York planned for late October."
+  },
+  {
+   "id": "nyc_hotel",
+   "text": "In New York User stays at the Ace Hotel."
+  }
+ ]
+}

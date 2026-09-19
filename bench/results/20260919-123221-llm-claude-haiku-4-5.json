@@ -1,0 +1,498 @@
+{
+  "when": "2026-09-19T12:31:55",
+  "k": 5,
+  "threshold": 0.5,
+  "n_memories": 238,
+  "results": {
+    "llm:claude-haiku-4-5": [
+      {
+        "scenario": "dad_birthday",
+        "got": [
+          "dad_70",
+          "dad_kokkari",
+          "parents_wc",
+          "lisbon_budget",
+          "budget_flag",
+          "sam_bday_nopa",
+          "offsite_dinner",
+          "hotel_pref",
+          "calendar_pref"
+        ],
+        "found": [],
+        "missed": [
+          "dad_stent",
+          "mom_wheelchair"
+        ],
+        "noise": [
+          "lisbon_budget",
+          "budget_flag",
+          "sam_bday_nopa",
+          "offsite_dinner",
+          "hotel_pref",
+          "calendar_pref"
+        ],
+        "returned": 9,
+        "pass": false,
+        "latency_s": 2.678734417000669,
+        "cost_usd": 0.005634,
+        "cost_cached_usd": 0.0069475,
+        "input_tokens": 5309,
+        "output_tokens": 65,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "linkedin_q3",
+        "got": [
+          "linkedin_style",
+          "seriesc_post",
+          "ipo_quiet",
+          "user_job",
+          "northwind_size"
+        ],
+        "found": [
+          "ipo_quiet"
+        ],
+        "missed": [],
+        "noise": [
+          "northwind_size"
+        ],
+        "returned": 5,
+        "pass": true,
+        "latency_s": 1.6613849159912206,
+        "cost_usd": 0.005495,
+        "cost_cached_usd": 0.0007664,
+        "input_tokens": 5305,
+        "output_tokens": 38,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "thanksgiving_flights",
+        "got": [
+          "sam_family_tgiving",
+          "united_aisle",
+          "united_miles",
+          "tsa",
+          "passport",
+          "global_entry",
+          "sam_travel",
+          "pregnant",
+          "parental_leave",
+          "pto"
+        ],
+        "found": [
+          "pregnant"
+        ],
+        "missed": [],
+        "noise": [
+          "passport",
+          "sam_travel",
+          "pto"
+        ],
+        "returned": 10,
+        "pass": true,
+        "latency_s": 1.334202166995965,
+        "cost_usd": 0.005588,
+        "cost_cached_usd": 0.0008594,
+        "input_tokens": 5298,
+        "output_tokens": 58,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "tahoe_sunday",
+        "got": [
+          "pregnant",
+          "biscuit_anxiety",
+          "car_shop",
+          "palisades",
+          "tahoe_cabin",
+          "route_280",
+          "coffee",
+          "theo_school",
+          "sam_climbing"
+        ],
+        "found": [
+          "biscuit_anxiety",
+          "car_shop"
+        ],
+        "missed": [],
+        "noise": [
+          "route_280",
+          "coffee",
+          "theo_school",
+          "sam_climbing"
+        ],
+        "returned": 9,
+        "pass": true,
+        "latency_s": 1.484949083009269,
+        "cost_usd": 0.005602,
+        "cost_cached_usd": 0.0008734,
+        "input_tokens": 5302,
+        "output_tokens": 60,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "camera_order",
+        "got": [
+          "budget_flag",
+          "bh_card",
+          "card_stolen"
+        ],
+        "found": [
+          "budget_flag"
+        ],
+        "missed": [],
+        "noise": [],
+        "returned": 3,
+        "pass": true,
+        "latency_s": 1.0500589580042288,
+        "cost_usd": 0.00543,
+        "cost_cached_usd": 0.0007014,
+        "input_tokens": 5305,
+        "output_tokens": 25,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "plumber_invoice",
+        "got": [
+          "water_heater",
+          "plumber_ray",
+          "card_stolen",
+          "bh_card",
+          "budget_flag"
+        ],
+        "found": [
+          "card_stolen"
+        ],
+        "missed": [],
+        "noise": [
+          "bh_card"
+        ],
+        "returned": 5,
+        "pass": true,
+        "latency_s": 1.0631738329975633,
+        "cost_usd": 0.005493,
+        "cost_cached_usd": 0.0007643999999999999,
+        "input_tokens": 5308,
+        "output_tokens": 37,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "sam_wedding_gig",
+        "got": [
+          "parks_wedding",
+          "sam_film",
+          "invoice_template",
+          "email_tone",
+          "budget_flag",
+          "sam_job"
+        ],
+        "found": [],
+        "missed": [
+          "sam_h1b"
+        ],
+        "noise": [
+          "email_tone",
+          "budget_flag"
+        ],
+        "returned": 6,
+        "pass": false,
+        "latency_s": 1.2387775829993188,
+        "cost_usd": 0.005503,
+        "cost_cached_usd": 0.0007744,
+        "input_tokens": 5308,
+        "output_tokens": 39,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "merge_migration",
+        "got": [
+          "db_freeze",
+          "accounts_table",
+          "priya_backend",
+          "ship_command",
+          "ipo_quiet"
+        ],
+        "found": [
+          "db_freeze"
+        ],
+        "missed": [],
+        "noise": [],
+        "returned": 5,
+        "pass": true,
+        "latency_s": 1.0824882500019157,
+        "cost_usd": 0.005484,
+        "cost_cached_usd": 0.0007553999999999999,
+        "input_tokens": 5304,
+        "output_tokens": 36,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "lisbon_airbnb",
+        "got": [
+          "lisbon_budget",
+          "airbnb_pref",
+          "alfama",
+          "porto_casa",
+          "portuguese",
+          "pregnant",
+          "parental_leave",
+          "mom_wheelchair",
+          "dad_stent",
+          "parents_wc",
+          "theo_school",
+          "sam_job",
+          "house_closing",
+          "passport",
+          "global_entry",
+          "hotel_pref"
+        ],
+        "found": [
+          "mom_wheelchair"
+        ],
+        "missed": [],
+        "noise": [
+          "porto_casa",
+          "sam_job",
+          "house_closing",
+          "passport",
+          "global_entry"
+        ],
+        "returned": 16,
+        "pass": true,
+        "latency_s": 2.2297580410086084,
+        "cost_usd": 0.005762,
+        "cost_cached_usd": 0.0010334,
+        "input_tokens": 5312,
+        "output_tokens": 90,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "party_tart",
+        "got": [
+          "party_guests",
+          "leo_allergy",
+          "party_menu",
+          "budget_flag"
+        ],
+        "found": [
+          "party_guests",
+          "leo_allergy"
+        ],
+        "missed": [],
+        "noise": [
+          "budget_flag"
+        ],
+        "returned": 4,
+        "pass": true,
+        "latency_s": 1.0238969579950208,
+        "cost_usd": 0.00545,
+        "cost_cached_usd": 0.0007214,
+        "input_tokens": 5300,
+        "output_tokens": 30,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "thursday_plan",
+        "got": [
+          "vet_sanmateo",
+          "biscuit_anxiety",
+          "car_shop",
+          "theo_play",
+          "recruiting",
+          "date_night",
+          "biscuit_walker"
+        ],
+        "found": [
+          "car_shop",
+          "theo_play"
+        ],
+        "missed": [],
+        "noise": [],
+        "returned": 7,
+        "pass": true,
+        "latency_s": 1.2535701659944607,
+        "cost_usd": 0.005558,
+        "cost_cached_usd": 0.0008294,
+        "input_tokens": 5313,
+        "output_tokens": 49,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "belize_dive",
+        "got": [
+          "belize_dates",
+          "dive_cert",
+          "seasick",
+          "dramamine_brand",
+          "belize_blue_hole",
+          "sam_anniv",
+          "passport",
+          "global_entry",
+          "pregnant",
+          "tsa"
+        ],
+        "found": [
+          "pregnant"
+        ],
+        "missed": [],
+        "noise": [
+          "passport",
+          "global_entry",
+          "tsa"
+        ],
+        "returned": 10,
+        "pass": true,
+        "latency_s": 1.530036124997423,
+        "cost_usd": 0.005592,
+        "cost_cached_usd": 0.0008634,
+        "input_tokens": 5297,
+        "output_tokens": 59,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "cocktail_bar",
+        "got": [
+          "stripe_friends",
+          "sober",
+          "date_night",
+          "calendar_pref",
+          "email_tone",
+          "apartment",
+          "timezone"
+        ],
+        "found": [
+          "sober"
+        ],
+        "missed": [],
+        "noise": [
+          "date_night",
+          "calendar_pref",
+          "email_tone",
+          "apartment",
+          "timezone"
+        ],
+        "returned": 7,
+        "pass": true,
+        "latency_s": 2.095436999996309,
+        "cost_usd": 0.005497,
+        "cost_cached_usd": 0.0007684,
+        "input_tokens": 5297,
+        "output_tokens": 40,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "investor_dinner",
+        "got": [
+          "theo_play",
+          "bh_card",
+          "party_guests",
+          "leo_allergy",
+          "party_menu",
+          "offsite_dinner",
+          "one_on_one",
+          "calendar_pref",
+          "ipo_quiet",
+          "investor_list"
+        ],
+        "found": [
+          "theo_play"
+        ],
+        "missed": [],
+        "noise": [
+          "bh_card",
+          "party_guests",
+          "leo_allergy",
+          "party_menu",
+          "offsite_dinner",
+          "one_on_one",
+          "ipo_quiet"
+        ],
+        "returned": 10,
+        "pass": true,
+        "latency_s": 1.5656842089956626,
+        "cost_usd": 0.005627,
+        "cost_cached_usd": 0.0008983999999999999,
+        "input_tokens": 5292,
+        "output_tokens": 67,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "q4_pricing",
+        "got": [
+          "dana_manager",
+          "q4_okrs_due",
+          "promotion",
+          "ipo_quiet"
+        ],
+        "found": [],
+        "missed": [
+          "parental_leave"
+        ],
+        "noise": [
+          "ipo_quiet"
+        ],
+        "returned": 4,
+        "pass": false,
+        "latency_s": 1.571590167004615,
+        "cost_usd": 0.005468,
+        "cost_cached_usd": 0.0007394,
+        "input_tokens": 5308,
+        "output_tokens": 32,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "lease_renewal",
+        "got": [
+          "landlord",
+          "lease_deadline",
+          "email_tone"
+        ],
+        "found": [],
+        "missed": [
+          "house_closing"
+        ],
+        "noise": [
+          "email_tone"
+        ],
+        "returned": 3,
+        "pass": false,
+        "latency_s": 1.0469772500073304,
+        "cost_usd": 0.005413,
+        "cost_cached_usd": 0.0006843999999999999,
+        "input_tokens": 5298,
+        "output_tokens": 23,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "none_math",
+        "got": [],
+        "found": [],
+        "missed": [],
+        "noise": [],
+        "returned": 0,
+        "pass": true,
+        "latency_s": 0.747533250003471,
+        "cost_usd": 0.005339,
+        "cost_cached_usd": 0.0006104,
+        "input_tokens": 5289,
+        "output_tokens": 10,
+        "stop_reason": "end_turn"
+      },
+      {
+        "scenario": "none_translate",
+        "got": [],
+        "found": [],
+        "missed": [],
+        "noise": [],
+        "returned": 0,
+        "pass": true,
+        "latency_s": 0.7144109999935608,
+        "cost_usd": 0.005344,
+        "cost_cached_usd": 0.0006154,
+        "input_tokens": 5294,
+        "output_tokens": 10,
+        "stop_reason": "end_turn"
+      }
+    ]
+  }
+}

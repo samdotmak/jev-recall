@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0c11;
+  --panel: #11141b;
+  --panel-2: #161a23;
+  --line: #242a36;
+  --text: #eef0f5;
+  --muted: #8b93a7;
+  --faint: #5b6377;
+  --key: #fbbf24;
+  --good: #34d399;
+  --bad: #f87171;
+  --embeddings: #7aa7ff;
+  --sonnet: #e8956b;
+  --jev: #5eead4;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-key: var(--key);
+  --color-good: var(--good);
+  --color-bad: var(--bad);
+  --color-embeddings: var(--embeddings);
+  --color-sonnet: var(--sonnet);
+  --color-jev: var(--jev);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: caret 1s step-end infinite;
+}

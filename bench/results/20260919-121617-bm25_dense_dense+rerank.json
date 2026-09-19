@@ -1,0 +1,1262 @@
+{
+  "when": "2026-09-19T12:15:10",
+  "k": 5,
+  "threshold": 0.5,
+  "n_memories": 238,
+  "results": {
+    "bm25": [
+      {
+        "scenario": "dad_birthday",
+        "got": [
+          "sam_bday_nopa",
+          "offsite_dinner",
+          "dad_70",
+          "birthday_user",
+          "party_guests"
+        ],
+        "found": [],
+        "missed": [
+          "dad_stent",
+          "mom_wheelchair"
+        ],
+        "noise": [
+          "sam_bday_nopa",
+          "offsite_dinner",
+          "birthday_user",
+          "party_guests"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.0007184160058386624,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "linkedin_q3",
+        "got": [
+          "seriesc_post",
+          "newsletter",
+          "budget_flag",
+          "linkedin_style",
+          "q3_okr"
+        ],
+        "found": [],
+        "missed": [
+          "ipo_quiet"
+        ],
+        "noise": [
+          "newsletter",
+          "budget_flag",
+          "q3_okr"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.0006235829932847992,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "thanksgiving_flights",
+        "got": [
+          "travel_mexico",
+          "photo_backup",
+          "tgiving_2025",
+          "travel_japan",
+          "sam_bday_nopa"
+        ],
+        "found": [],
+        "missed": [
+          "pregnant"
+        ],
+        "noise": [
+          "travel_mexico",
+          "photo_backup",
+          "tgiving_2025",
+          "travel_japan",
+          "sam_bday_nopa"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.00047170800098683685,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "tahoe_sunday",
+        "got": [
+          "coffee_limit",
+          "work_travel",
+          "burritos",
+          "steps",
+          "photo_backup"
+        ],
+        "found": [],
+        "missed": [
+          "biscuit_anxiety",
+          "car_shop"
+        ],
+        "noise": [
+          "coffee_limit",
+          "work_travel",
+          "burritos",
+          "steps",
+          "photo_backup"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.00046312500489875674,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "camera_order",
+        "got": [
+          "bh_card",
+          "furniture",
+          "apartment",
+          "netflix",
+          "doctor"
+        ],
+        "found": [],
+        "missed": [
+          "budget_flag"
+        ],
+        "noise": [
+          "furniture",
+          "apartment",
+          "netflix",
+          "doctor"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.0005392089951783419,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "plumber_invoice",
+        "got": [
+          "plumber_ray",
+          "water_heater",
+          "bike",
+          "netflix",
+          "clipper"
+        ],
+        "found": [],
+        "missed": [
+          "card_stolen"
+        ],
+        "noise": [
+          "bike",
+          "netflix",
+          "clipper"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.00057458299852442,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "sam_wedding_gig",
+        "got": [
+          "budget_flag",
+          "movers",
+          "travel_mexico",
+          "birthday_lunch",
+          "apartment"
+        ],
+        "found": [],
+        "missed": [
+          "sam_h1b"
+        ],
+        "noise": [
+          "budget_flag",
+          "movers",
+          "travel_mexico",
+          "birthday_lunch",
+          "apartment"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.0007605419959872961,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "merge_migration",
+        "got": [
+          "accounts_table",
+          "ship_command",
+          "priya_backend",
+          "two_factor",
+          "sam_bday_nopa"
+        ],
+        "found": [],
+        "missed": [
+          "db_freeze"
+        ],
+        "noise": [
+          "two_factor",
+          "sam_bday_nopa"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.0006664579996140674,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "lisbon_airbnb",
+        "got": [
+          "lisbon_budget",
+          "zoo",
+          "portuguese",
+          "sam_parents",
+          "alfama"
+        ],
+        "found": [],
+        "missed": [
+          "mom_wheelchair"
+        ],
+        "noise": [
+          "zoo",
+          "sam_parents"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.0006558330060215667,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "party_tart",
+        "got": [
+          "party_guests",
+          "tartine_cake",
+          "party_menu",
+          "tartine_bun",
+          "theo_bday"
+        ],
+        "found": [
+          "party_guests"
+        ],
+        "missed": [
+          "leo_allergy"
+        ],
+        "noise": [
+          "tartine_cake",
+          "tartine_bun",
+          "theo_bday"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.00041120799141936004,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "thursday_plan",
+        "got": [
+          "vet_sanmateo",
+          "date_night",
+          "voting",
+          "running",
+          "slack_status"
+        ],
+        "found": [],
+        "missed": [
+          "car_shop",
+          "theo_play"
+        ],
+        "noise": [
+          "voting",
+          "running",
+          "slack_status"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.0006333750061457977,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "belize_dive",
+        "got": [
+          "belize_dates",
+          "work_travel",
+          "lisbon_budget",
+          "portuguese",
+          "zoo"
+        ],
+        "found": [],
+        "missed": [
+          "pregnant"
+        ],
+        "noise": [
+          "work_travel",
+          "lisbon_budget",
+          "portuguese",
+          "zoo"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.0004092919989489019,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "cocktail_bar",
+        "got": [
+          "birthday_lunch",
+          "stripe_friends",
+          "dad_golf",
+          "sam_job",
+          "trivia_night"
+        ],
+        "found": [],
+        "missed": [
+          "sober"
+        ],
+        "noise": [
+          "birthday_lunch",
+          "dad_golf",
+          "sam_job"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.00042591700912453234,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "investor_dinner",
+        "got": [
+          "offsite_dinner",
+          "investor_list",
+          "alarm",
+          "mortgage",
+          "haircut"
+        ],
+        "found": [],
+        "missed": [
+          "theo_play"
+        ],
+        "noise": [
+          "offsite_dinner",
+          "alarm",
+          "mortgage",
+          "haircut"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.0003032079985132441,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "q4_pricing",
+        "got": [
+          "parental_leave",
+          "promotion",
+          "travel_japan",
+          "ev_plan",
+          "pricing_shipped"
+        ],
+        "found": [
+          "parental_leave"
+        ],
+        "missed": [],
+        "noise": [
+          "travel_japan",
+          "ev_plan"
+        ],
+        "returned": 5,
+        "pass": true,
+        "latency_s": 0.0006663340027444065,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "lease_renewal",
+        "got": [
+          "landlord",
+          "pto",
+          "sam_anniv",
+          "lease_deadline",
+          "smart_home"
+        ],
+        "found": [],
+        "missed": [
+          "house_closing"
+        ],
+        "noise": [
+          "pto",
+          "sam_anniv",
+          "smart_home"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.00037437499850057065,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "none_math",
+        "got": [
+          "house_closing",
+          "belize_dates",
+          "dana_manager",
+          "q3_okr",
+          "pto"
+        ],
+        "found": [],
+        "missed": [],
+        "noise": [
+          "house_closing",
+          "belize_dates",
+          "dana_manager",
+          "q3_okr",
+          "pto"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.00019383399921935052,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "none_translate",
+        "got": [
+          "thank_you",
+          "vitamins",
+          "coffee",
+          "nyt_games",
+          "tartine_bun"
+        ],
+        "found": [],
+        "missed": [],
+        "noise": [
+          "thank_you",
+          "vitamins",
+          "coffee",
+          "nyt_games",
+          "tartine_bun"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.0002545000024838373,
+        "cost_usd": 0.0
+      }
+    ],
+    "dense": [
+      {
+        "scenario": "dad_birthday",
+        "got": [
+          "dad_70",
+          "party_guests",
+          "offsite_dinner",
+          "dad_kokkari",
+          "date_night"
+        ],
+        "found": [],
+        "missed": [
+          "dad_stent",
+          "mom_wheelchair"
+        ],
+        "noise": [
+          "party_guests",
+          "offsite_dinner",
+          "date_night"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.06982683300157078,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "linkedin_q3",
+        "got": [
+          "seriesc_post",
+          "promotion",
+          "linkedin_style",
+          "q3_okr",
+          "newsletter"
+        ],
+        "found": [],
+        "missed": [
+          "ipo_quiet"
+        ],
+        "noise": [
+          "promotion",
+          "q3_okr",
+          "newsletter"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.06916587500018068,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "thanksgiving_flights",
+        "got": [
+          "work_travel",
+          "united_miles",
+          "united_aisle",
+          "pregnant",
+          "date_night"
+        ],
+        "found": [
+          "pregnant"
+        ],
+        "missed": [],
+        "noise": [
+          "work_travel",
+          "date_night"
+        ],
+        "returned": 5,
+        "pass": true,
+        "latency_s": 0.05888283399690408,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "tahoe_sunday",
+        "got": [
+          "calendar_pref",
+          "farmers_market",
+          "tahoe_cabin",
+          "brunch",
+          "work_travel"
+        ],
+        "found": [],
+        "missed": [
+          "biscuit_anxiety",
+          "car_shop"
+        ],
+        "noise": [
+          "calendar_pref",
+          "brunch",
+          "work_travel"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.061069750008755364,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "camera_order",
+        "got": [
+          "furniture",
+          "bh_card",
+          "seriesc_post",
+          "amex",
+          "stationery"
+        ],
+        "found": [],
+        "missed": [
+          "budget_flag"
+        ],
+        "noise": [
+          "furniture",
+          "seriesc_post",
+          "stationery"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.07690795800590422,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "plumber_invoice",
+        "got": [
+          "plumber_ray",
+          "autopay",
+          "water_heater",
+          "apartment",
+          "movers"
+        ],
+        "found": [],
+        "missed": [
+          "card_stolen"
+        ],
+        "noise": [
+          "movers"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.07890866600791924,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "sam_wedding_gig",
+        "got": [
+          "promotion",
+          "sam_h1b",
+          "budget_flag",
+          "invoice_template",
+          "work_travel"
+        ],
+        "found": [
+          "sam_h1b"
+        ],
+        "missed": [],
+        "noise": [
+          "promotion",
+          "budget_flag",
+          "work_travel"
+        ],
+        "returned": 5,
+        "pass": true,
+        "latency_s": 0.07923258299706504,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "merge_migration",
+        "got": [
+          "promotion",
+          "invoice_template",
+          "priya_backend",
+          "accounts_table",
+          "bh_card"
+        ],
+        "found": [],
+        "missed": [
+          "db_freeze"
+        ],
+        "noise": [
+          "promotion",
+          "invoice_template",
+          "bh_card"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.06953549999161623,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "lisbon_airbnb",
+        "got": [
+          "alfama",
+          "lisbon_budget",
+          "portuguese",
+          "apartment",
+          "furniture"
+        ],
+        "found": [],
+        "missed": [
+          "mom_wheelchair"
+        ],
+        "noise": [
+          "apartment",
+          "furniture"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.07797249998839106,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "party_tart",
+        "got": [
+          "tartine_bun",
+          "tartine_cake",
+          "dessert",
+          "party_menu",
+          "party_guests"
+        ],
+        "found": [
+          "party_guests"
+        ],
+        "missed": [
+          "leo_allergy"
+        ],
+        "noise": [
+          "tartine_bun",
+          "tartine_cake"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.05965270799060818,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "thursday_plan",
+        "got": [
+          "pet_insurance",
+          "vet_sanmateo",
+          "timezone",
+          "work_travel",
+          "hospital"
+        ],
+        "found": [],
+        "missed": [
+          "car_shop",
+          "theo_play"
+        ],
+        "noise": [
+          "timezone",
+          "work_travel",
+          "hospital"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.06977204099530354,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "belize_dive",
+        "got": [
+          "belize_dates",
+          "belize_blue_hole",
+          "travel_mexico",
+          "dive_cert",
+          "date_night"
+        ],
+        "found": [],
+        "missed": [
+          "pregnant"
+        ],
+        "noise": [
+          "travel_mexico",
+          "date_night"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.05101437499979511,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "cocktail_bar",
+        "got": [
+          "trivia_night",
+          "birthday_lunch",
+          "stripe_friends",
+          "journaling",
+          "cleaner"
+        ],
+        "found": [],
+        "missed": [
+          "sober"
+        ],
+        "noise": [
+          "birthday_lunch",
+          "journaling",
+          "cleaner"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.05107887501071673,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "investor_dinner",
+        "got": [
+          "date_night",
+          "party_guests",
+          "recruiting",
+          "offsite_dinner",
+          "theo_play"
+        ],
+        "found": [
+          "theo_play"
+        ],
+        "missed": [],
+        "noise": [
+          "party_guests",
+          "offsite_dinner"
+        ],
+        "returned": 5,
+        "pass": true,
+        "latency_s": 0.042274666993762366,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "q4_pricing",
+        "got": [
+          "promotion",
+          "newsletter",
+          "one_on_one",
+          "costco_renew",
+          "dana_manager"
+        ],
+        "found": [],
+        "missed": [
+          "parental_leave"
+        ],
+        "noise": [
+          "newsletter",
+          "costco_renew"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.07017612499475945,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "lease_renewal",
+        "got": [
+          "landlord",
+          "pto",
+          "lease_deadline",
+          "costco_renew",
+          "apartment"
+        ],
+        "found": [],
+        "missed": [
+          "house_closing"
+        ],
+        "noise": [
+          "pto",
+          "costco_renew"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.05090299999574199,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "none_math",
+        "got": [
+          "inspection",
+          "blood_type",
+          "retirement",
+          "united_miles",
+          "side_project"
+        ],
+        "found": [],
+        "missed": [],
+        "noise": [
+          "inspection",
+          "blood_type",
+          "retirement",
+          "united_miles",
+          "side_project"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.03366941701096948,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "none_translate",
+        "got": [
+          "languages",
+          "timezone",
+          "travel_japan",
+          "alarm",
+          "portuguese"
+        ],
+        "found": [],
+        "missed": [],
+        "noise": [
+          "timezone",
+          "alarm",
+          "portuguese"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.05037724999419879,
+        "cost_usd": 0.0
+      }
+    ],
+    "dense+rerank": [
+      {
+        "scenario": "dad_birthday",
+        "got": [
+          "dad_70",
+          "birthday_user",
+          "birthday_lunch",
+          "new_years",
+          "offsite_dinner"
+        ],
+        "found": [],
+        "missed": [
+          "dad_stent",
+          "mom_wheelchair"
+        ],
+        "noise": [
+          "birthday_user",
+          "birthday_lunch",
+          "new_years",
+          "offsite_dinner"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 1.4750768749945564,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "linkedin_q3",
+        "got": [
+          "seriesc_post",
+          "q3_okr",
+          "retirement",
+          "looker_dash",
+          "linkedin_style"
+        ],
+        "found": [],
+        "missed": [
+          "ipo_quiet"
+        ],
+        "noise": [
+          "q3_okr",
+          "retirement",
+          "looker_dash"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 1.4498967910039937,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "thanksgiving_flights",
+        "got": [
+          "journaling",
+          "date_night",
+          "work_travel",
+          "sam_family_tgiving",
+          "united_aisle"
+        ],
+        "found": [],
+        "missed": [
+          "pregnant"
+        ],
+        "noise": [
+          "journaling",
+          "date_night",
+          "work_travel"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.9809375420009019,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "tahoe_sunday",
+        "got": [
+          "work_travel",
+          "slack_status",
+          "timezone",
+          "farmers_market",
+          "tsa"
+        ],
+        "found": [],
+        "missed": [
+          "biscuit_anxiety",
+          "car_shop"
+        ],
+        "noise": [
+          "work_travel",
+          "slack_status",
+          "timezone",
+          "tsa"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.9815590420039371,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "camera_order",
+        "got": [
+          "bh_card",
+          "movers",
+          "budget_flag",
+          "eye_doctor",
+          "pricing_shipped"
+        ],
+        "found": [
+          "budget_flag"
+        ],
+        "missed": [],
+        "noise": [
+          "movers",
+          "eye_doctor",
+          "pricing_shipped"
+        ],
+        "returned": 5,
+        "pass": true,
+        "latency_s": 1.1702800829953048,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "plumber_invoice",
+        "got": [
+          "autopay",
+          "plumber_ray",
+          "clipper",
+          "water_heater",
+          "pricing_shipped"
+        ],
+        "found": [],
+        "missed": [
+          "card_stolen"
+        ],
+        "noise": [
+          "clipper",
+          "pricing_shipped"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 1.4228033749968745,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "sam_wedding_gig",
+        "got": [
+          "sam_film",
+          "sam_birthday",
+          "date_night",
+          "budget_flag",
+          "sam_anniv"
+        ],
+        "found": [],
+        "missed": [
+          "sam_h1b"
+        ],
+        "noise": [
+          "sam_birthday",
+          "date_night",
+          "budget_flag",
+          "sam_anniv"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 1.3013482089882018,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "merge_migration",
+        "got": [
+          "retirement",
+          "two_factor",
+          "accounts_table",
+          "pricing_shipped",
+          "priya_backend"
+        ],
+        "found": [],
+        "missed": [
+          "db_freeze"
+        ],
+        "noise": [
+          "retirement",
+          "two_factor",
+          "pricing_shipped"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 1.5206682499992894,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "lisbon_airbnb",
+        "got": [
+          "lisbon_budget",
+          "password_mgr",
+          "spotify",
+          "portuguese",
+          "porto_casa"
+        ],
+        "found": [],
+        "missed": [
+          "mom_wheelchair"
+        ],
+        "noise": [
+          "password_mgr",
+          "spotify",
+          "porto_casa"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 1.211847166006919,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "party_tart",
+        "got": [
+          "tartine_bun",
+          "dessert",
+          "party_menu",
+          "new_years",
+          "tartine_cake"
+        ],
+        "found": [],
+        "missed": [
+          "party_guests",
+          "leo_allergy"
+        ],
+        "noise": [
+          "tartine_bun",
+          "new_years",
+          "tartine_cake"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 1.0461122090055142,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "thursday_plan",
+        "got": [
+          "pet_insurance",
+          "vet_sanmateo",
+          "biscuit_boarding",
+          "biscuit_anxiety",
+          "biscuit_age"
+        ],
+        "found": [],
+        "missed": [
+          "car_shop",
+          "theo_play"
+        ],
+        "noise": [
+          "biscuit_boarding",
+          "biscuit_age"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 1.4739768339932198,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "belize_dive",
+        "got": [
+          "belize_dates",
+          "sam_anniv",
+          "work_travel",
+          "pto",
+          "travel_japan"
+        ],
+        "found": [],
+        "missed": [
+          "pregnant"
+        ],
+        "noise": [
+          "work_travel",
+          "pto",
+          "travel_japan"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 1.0144464159966446,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "cocktail_bar",
+        "got": [
+          "stripe_friends",
+          "stripe_offsite",
+          "date_night",
+          "journaling",
+          "pizza"
+        ],
+        "found": [],
+        "missed": [
+          "sober"
+        ],
+        "noise": [
+          "date_night",
+          "journaling",
+          "pizza"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.9062357920047361,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "investor_dinner",
+        "got": [
+          "new_years",
+          "date_night",
+          "recruiting",
+          "calendar_pref",
+          "party_menu"
+        ],
+        "found": [],
+        "missed": [
+          "theo_play"
+        ],
+        "noise": [
+          "new_years",
+          "party_menu"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 1.1252841660025297,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "q4_pricing",
+        "got": [
+          "pricing_shipped",
+          "promotion",
+          "q4_okrs_due",
+          "one_on_one",
+          "budget_flag"
+        ],
+        "found": [],
+        "missed": [
+          "parental_leave"
+        ],
+        "noise": [
+          "budget_flag"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 1.240387041005306,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "lease_renewal",
+        "got": [
+          "landlord",
+          "lease_deadline",
+          "pto",
+          "autopay",
+          "donation"
+        ],
+        "found": [],
+        "missed": [
+          "house_closing"
+        ],
+        "noise": [
+          "pto",
+          "autopay",
+          "donation"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 1.0088885000004666,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "none_math",
+        "got": [
+          "retirement",
+          "blood_type",
+          "q3_okr",
+          "conference",
+          "fsa"
+        ],
+        "found": [],
+        "missed": [],
+        "noise": [
+          "retirement",
+          "blood_type",
+          "q3_okr",
+          "conference",
+          "fsa"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.7013069579988951,
+        "cost_usd": 0.0
+      },
+      {
+        "scenario": "none_translate",
+        "got": [
+          "languages",
+          "travel_japan",
+          "timezone",
+          "two_factor",
+          "dramamine_brand"
+        ],
+        "found": [],
+        "missed": [],
+        "noise": [
+          "timezone",
+          "two_factor",
+          "dramamine_brand"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.8211891670071054,
+        "cost_usd": 0.0
+      }
+    ]
+  }
+}
