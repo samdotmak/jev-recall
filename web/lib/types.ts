@@ -12,9 +12,9 @@ export type RunResult = {
 };
 
 export const SYSTEMS: { id: SystemId; name: string; method: string }[] = [
-  { id: "embeddings", name: "Semantic search", method: "OpenAI text-embedding-3-large · top 5" },
-  { id: "sonnet", name: "LLM judge", method: "Claude Sonnet 5 reads every memory" },
-  { id: "jev", name: "Jev Recall", method: "TypeSafe Jev scores every memory" },
+  { id: "embeddings", name: "Semantic search", method: "OpenAI text-embedding-3-large" },
+  { id: "sonnet", name: "Claude Sonnet 5", method: "LLM reads all 238 memories" },
+  { id: "jev", name: "Jev Recall", method: "Scores all 238 memories" },
 ];
 
 export const KEY_HEADERS: Record<SystemId, string> = {

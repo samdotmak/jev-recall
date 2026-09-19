@@ -1,23 +1,25 @@
 "use client";
-import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Preset } from "@/data/presets";
 import { KEY_HEADERS, SYSTEMS, type Memory, type RunResult, type SystemId } from "@/lib/types";
 import { KeysDialog, useKeys } from "./KeysDialog";
-import { MemoryWall } from "./MemoryWall";
+import { ResultCard, type CardState } from "./ResultCard";
+import { ScanField, type Scan } from "./ScanField";
 import { Stage } from "./Stage";
-import { SystemColumn, formatCost, type ColumnState } from "./SystemColumn";
 
 type Replays = Record<string, Record<SystemId, RunResult> & { recordedAt: string }>;
-type Phase = "intro" | "typing" | "reveal" | "racing" | "done";
-type Columns = Record<SystemId, ColumnState>;
+type Phase = "ready" | "typing" | "running" | "done";
+type Cards = Record<SystemId, CardState>;
 
-const IDLE: Columns = {
+const IDLE: Cards = {
   embeddings: { status: "idle", elapsedMs: 0 },
   sonnet: { status: "idle", elapsedMs: 0 },
   jev: { status: "idle", elapsedMs: 0 },
 };
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+// From the benchmark in bench/ (README): 238 memories, 18 requests, 20 key memories.
+const BENCHMARK = { jev: "19/20", sonnet: "19/20", embeddings: "4/20", faster: "~22× faster", cost: "~1/46 cost" };
 
 export function Demo({
   memories,
@@ -34,75 +36,65 @@ export function Demo({
   const [preset, setPreset] = useState<Preset>(presets[0]);
   const [request, setRequest] = useState(presets[0].request);
   const [typed, setTyped] = useState(present ? 0 : presets[0].request.length);
-  const [phase, setPhase] = useState<Phase>(present ? "intro" : "typing");
-  const [wallVisible, setWallVisible] = useState(!present);
-  const [cols, setCols] = useState<Columns>(IDLE);
-  const keys = useKeys();
+  const [phase, setPhase] = useState<Phase>("ready");
+  const [cards, setCards] = useState<Cards>(IDLE);
+  const [clock, setClock] = useState(0);
   const [showKeys, setShowKeys] = useState(false);
+  const keys = useKeys();
   const runId = useRef(0);
 
   const live = keys.jev !== "" && keys.sonnet !== "" && keys.embeddings !== "";
   const isPreset = request.trim() === preset.request;
   const keyIds = isPreset ? preset.keyIds : [];
-  const graded = isPreset;
 
   const run = useCallback(
-    async (p: Preset, text: string, opts: { intro: boolean }) => {
+    async (p: Preset, text: string, opts: { type: boolean }) => {
       const my = ++runId.current;
       const alive = () => runId.current === my;
-      setCols(IDLE);
-      const presetRun = text.trim() === p.request;
-
-      if (opts.intro) {
-        setPhase("intro");
-        setWallVisible(false);
-        setTyped(0);
-        await sleep(300);
-        setWallVisible(true);
-        await sleep(2600);
-        if (!alive()) return;
+      setCards(IDLE);
+      setClock(0);
+      if (opts.type) {
         setPhase("typing");
+        setTyped(0);
+        await sleep(700);
         for (let i = 1; i <= text.length; i++) {
-          setTyped(i);
-          await sleep(28);
           if (!alive()) return;
+          setTyped(i);
+          await sleep(30);
         }
-        await sleep(900);
-      } else {
-        setTyped(text.length);
-        setWallVisible(true);
+        await sleep(700);
       }
       if (!alive()) return;
-      if (presetRun) {
-        setPhase("reveal");
-        await sleep(opts.intro ? 3200 : 1600);
-        if (!alive()) return;
-      }
-      setPhase("racing");
+      setTyped(text.length);
+      setPhase("running");
 
       const t0 = performance.now();
       const finished = new Set<SystemId>();
+      let slowest = 0;
       const tick = () => {
         if (!alive()) return;
         const now = performance.now() - t0;
-        setCols((c) => {
+        if (finished.size < SYSTEMS.length) setClock(now);
+        setCards((c) => {
           const next = { ...c };
           for (const s of SYSTEMS) if (next[s.id].status === "running") next[s.id] = { ...next[s.id], elapsedMs: now };
           return next;
         });
         if (finished.size < SYSTEMS.length) requestAnimationFrame(tick);
       };
-      setCols({
+      setCards({
         embeddings: { status: "running", elapsedMs: 0 },
         sonnet: { status: "running", elapsedMs: 0 },
         jev: { status: "running", elapsedMs: 0 },
       });
       requestAnimationFrame(tick);
 
-      const finish = (id: SystemId, state: ColumnState) => {
+      const finish = (id: SystemId, state: CardState) => {
         if (!alive()) return;
         finished.add(id);
-        setCols((c) => ({ ...c, [id]: state }));
+        setCards((c) => ({ ...c, [id]: state }));
+        slowest = Math.max(slowest, state.elapsedMs);
+        if (finished.size === SYSTEMS.length) setClock(slowest);
       };
 
       await Promise.all(
@@ -139,29 +131,28 @@ export function Demo({
       runId.current++;
       setPreset(p);
       setRequest(p.request);
-      setCols(IDLE);
-      if (autoplay) run(p, p.request, { intro: present });
-      else {
-        setPhase("typing");
-        setTyped(p.request.length);
-      }
+      setCards(IDLE);
+      setClock(0);
+      setPhase("ready");
+      setTyped(p.request.length);
+      if (autoplay) run(p, p.request, { type: present });
     },
     [run, present],
   );
 
-  // Presentation mode: autoplay once on load. Keyboard: space runs, 1-4 pick presets.
+  // Presentation mode autoplays once. Keyboard: Space runs, 1-4 pick presets.
   useEffect(() => {
-    if (present) {
-      const t = setTimeout(() => run(presets[0], presets[0].request, { intro: true }), 800);
-      return () => clearTimeout(t);
-    }
+    if (!present) return;
+    const t = setTimeout(() => run(presets[0], presets[0].request, { type: true }), 900);
+    return () => clearTimeout(t);
   }, [present, presets, run]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if ((e.target as HTMLElement)?.tagName === "TEXTAREA" || (e.target as HTMLElement)?.tagName === "INPUT") return;
+      const tag = (e.target as HTMLElement)?.tagName;
+      if (tag === "TEXTAREA" || tag === "INPUT") return;
       if (e.code === "Space") {
         e.preventDefault();
-        run(preset, request, { intro: present });
+        run(preset, request, { type: present });
       }
       const n = Number(e.key);
       if (n >= 1 && n <= presets.length) choose(presets[n - 1], present);
@@ -170,169 +161,161 @@ export function Demo({
     return () => window.removeEventListener("keydown", onKey);
   }, [run, choose, preset, request, present, presets]);
 
-  const done = phase === "done";
-  const s = cols.sonnet.result;
-  const j = cols.jev.result;
-  const e = cols.embeddings.result;
-  const found = (r?: RunResult) => !!r && keyIds.every((k) => r.ids.includes(k));
-  const costX = s && j && j.costUsd > 0 ? Math.round(s.costUsd / j.costUsd) : 0;
-  const speedX = done && cols.jev.elapsedMs > 0 ? Math.round(cols.sonnet.elapsedMs / cols.jev.elapsedMs) : 0;
+  // The scan field's view of each method: what it picked and where its scanner settles.
+  const scans = Object.fromEntries(
+    SYSTEMS.map(({ id }) => {
+      const c = cards[id];
+      const picks = c.result?.ids ?? [];
+      const target = picks.find((p) => keyIds.includes(p)) ?? picks[0];
+      return [id, { status: c.status, elapsedMs: c.elapsedMs, picks, target } satisfies Scan];
+    }),
+  ) as Record<SystemId, Scan>;
 
-  const caption: Record<Phase, string> = {
-    intro: `Your AI assistant remembers ${memories.length} things about your life.`,
-    typing: "You ask it to do something.",
-    reveal: keyIds.length > 1 ? "A few of those memories change the right answer." : "One of those memories changes the right answer.",
-    racing: "Three ways to choose which memories the assistant reads before it acts.",
-    done:
-      graded && found(j) && found(s) && !found(e)
-        ? `Semantic search missed it. Jev found it ${costX}× cheaper and ${speedX}× faster than Claude.`
-        : "Done.",
-  };
-
+  const headline =
+    phase === "running" ? `Scanning ${memories.length} memories…` : phase === "done" ? `Scanned ${memories.length} memories` : `${memories.length} memories`;
   const recordedAt = replays[preset.id]?.recordedAt;
+  const editable = live && !present && phase !== "running" && phase !== "typing";
 
   return (
     <Stage>
       <div className="flex h-full flex-col px-10 pb-7 pt-6">
-        {/* Top bar */}
-        <div className="flex h-10 items-center justify-between">
+        {/* Brand */}
+        <div className="flex h-9 items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-jev/15 font-mono text-[15px] font-bold text-jev">J</div>
-            <div className="text-[18px] font-semibold tracking-tight">Jev Recall</div>
-            <div className="text-[14px] text-faint">Retrieve by relevance, not resemblance.</div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className={`rounded-full border px-3 py-1 text-[12.5px] ${live ? "border-good/50 text-good" : "border-line text-muted"}`}>
-              {live ? "Live · your keys" : `Replay of a live run${recordedAt ? ` · ${new Date(recordedAt + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}` : ""}`}
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg border-[1.5px] border-[#cbd2dc] bg-white text-[17px] font-medium text-text">
+              J
             </div>
-            {!present && (
-              <button onClick={() => setShowKeys(true)} className="rounded-full border border-line px-3 py-1 text-[12.5px] text-text hover:border-muted">
+            <div className="text-[19px] font-medium text-text">Jev Recall</div>
+          </div>
+          {!present && (
+            <div className="flex items-center gap-3 text-[13px]">
+              <span className="text-faint">
+                {live
+                  ? "Live with your keys"
+                  : `Replaying a live run${recordedAt ? ` from ${new Date(recordedAt + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" })}` : ""}`}
+              </span>
+              <button
+                onClick={() => setShowKeys(true)}
+                className="rounded-full border border-line bg-white px-3.5 py-1.5 text-text shadow-sm hover:border-[#cbd2dc]"
+              >
                 {live ? "Keys" : "Run live with your keys"}
               </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
-        {/* Headline */}
-        <div className="mt-4">
-          <h1 className="text-[34px] font-semibold leading-[1.1] tracking-tight">
-            Your assistant knows {memories.length} things about your life.{" "}
-            <span className="text-muted">Which ones should it read first?</span>
-          </h1>
-        </div>
+        <h1 className="mt-2 text-[42px] font-bold leading-[1.1] tracking-[-0.02em] text-text">
+          See what each method <span className="text-faint">finds.</span>
+        </h1>
 
         {/* Request */}
         <div className="mt-4 flex items-center gap-4">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-panel-2 text-[13px] font-semibold text-muted">You</div>
-          <div className="flex min-h-[58px] flex-1 items-center rounded-2xl rounded-tl-sm border border-line bg-panel px-5 py-3">
-            {live && !present && phase !== "racing" && phase !== "intro" ? (
-              <textarea
+          <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border border-line bg-white text-[15px] text-muted">
+            You
+          </div>
+          <div className="flex h-[62px] flex-1 items-center rounded-2xl border border-[#dde2e9] bg-white px-6 shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
+            {editable ? (
+              <input
                 value={request}
-                rows={1}
                 maxLength={500}
                 onChange={(ev) => {
                   setRequest(ev.target.value);
                   setTyped(ev.target.value.length);
-                  setCols(IDLE);
+                  setCards(IDLE);
+                  setPhase("ready");
                 }}
-                className="w-full resize-none bg-transparent text-[20px] outline-none"
+                onKeyDown={(ev) => ev.key === "Enter" && run(preset, request, { type: false })}
+                className="w-full bg-transparent text-[20px] text-text outline-none"
               />
             ) : (
-              <div className="text-[20px]">
+              <div className="text-[20px] text-text">
                 {request.slice(0, typed)}
-                {phase === "typing" && typed < request.length && <span className="caret ml-0.5 text-jev">▍</span>}
+                {phase === "typing" && <span className="caret ml-0.5 text-jev">▍</span>}
               </div>
             )}
           </div>
-          {!present && (
-            <button
-              onClick={() => run(preset, request, { intro: false })}
-              disabled={phase === "racing" || phase === "reveal" || !request.trim()}
-              className="h-[58px] shrink-0 rounded-2xl bg-jev px-6 text-[16px] font-semibold text-bg transition hover:brightness-110 disabled:opacity-40"
-            >
-              Find relevant memories
-            </button>
-          )}
+          <button
+            onClick={() => run(preset, request, { type: false })}
+            disabled={phase === "running" || phase === "typing" || !request.trim()}
+            className="flex h-[62px] shrink-0 items-center gap-3 rounded-2xl border border-[#99e6d8] bg-[#d5f5ef] px-7 text-[19px] font-semibold text-text transition hover:bg-[#c3f0e7] disabled:opacity-60"
+          >
+            <svg width="14" height="16" viewBox="0 0 14 16" aria-hidden>
+              <path d="M1 1.5v13l12-6.5z" fill="currentColor" />
+            </svg>
+            Run comparison
+          </button>
         </div>
         {!present && (
-          <div className="ml-[60px] mt-3 flex gap-2">
+          <div className="ml-[68px] mt-2.5 flex gap-2">
             {presets.map((p, i) => (
               <button
                 key={p.id}
                 onClick={() => choose(p, false)}
                 className={`rounded-full border px-3 py-1 text-[13px] transition ${
-                  p.id === preset.id && isPreset ? "border-text/60 bg-panel-2 text-text" : "border-line text-muted hover:text-text"
+                  p.id === preset.id && isPreset
+                    ? "border-[#cbd2dc] bg-white text-text shadow-sm"
+                    : "border-transparent text-muted hover:text-text"
                 }`}
               >
-                <span className="mr-1.5 font-mono text-faint">{i + 1}</span>
+                <span className="mr-1.5 text-faint">{i + 1}</span>
                 {p.label}
               </button>
             ))}
           </div>
         )}
 
-        {/* Main */}
-        <div className="mt-4 grid min-h-0 flex-1 grid-cols-[340px_1fr_1fr_1fr] gap-4">
-          <MemoryWall memories={memories} keyIds={keyIds} revealed={phase === "reveal" || phase === "racing" || phase === "done"} visible={wallVisible} />
-          {SYSTEMS.map((sys) => (
-            <SystemColumn
-              key={sys.id}
-              id={sys.id}
-              name={sys.name}
-              method={sys.method}
-              state={cols[sys.id]}
-              memoryById={memoryById}
-              keyIds={keyIds}
-              keyLabel={preset.keyLabel}
-              graded={graded}
-              badReply={preset.badReply}
-              goodReply={preset.goodReply}
-              hero={sys.id === "jev"}
-            />
-          ))}
+        {/* Scan field + results */}
+        <div className="mt-4 grid min-h-0 flex-1 grid-cols-[minmax(0,1fr)_600px] gap-5">
+          <ScanField
+            memories={memories}
+            scans={scans}
+            keyIds={keyIds}
+            keyLabel={preset.keyLabel}
+            headline={headline}
+            elapsedMs={clock}
+            running={phase === "running"}
+          />
+          <div className="flex min-h-0 min-w-0 flex-col gap-3">
+            {SYSTEMS.map((s) => (
+              <ResultCard
+                key={s.id}
+                id={s.id}
+                name={s.name}
+                method={s.method}
+                state={cards[s.id]}
+                memoryById={memoryById}
+                keyIds={keyIds}
+                keyLabel={preset.keyLabel}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* Caption / verdict */}
-        <div className="mt-4 flex h-[60px] items-center justify-between">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={caption[phase]}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.35 }}
-              className="text-[22px] font-medium tracking-tight"
-            >
-              {caption[phase]}
-            </motion.div>
-          </AnimatePresence>
-          {done && s && j && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="flex gap-3">
-              <Stat label="Jev cost" value={formatCost(j.costUsd)} sub={`vs ${formatCost(s.costUsd)} for Claude`} accent />
-              <Stat label="Jev time" value={`${(cols.jev.elapsedMs / 1000).toFixed(2)}s`} sub={`vs ${(cols.sonnet.elapsedMs / 1000).toFixed(1)}s for Claude`} accent />
-            </motion.div>
-          )}
-        </div>
-        <div className="mt-1 text-[11.5px] text-faint">
-          Claude cost shown without prompt caching. Replies are illustrative. Memories are fictional. Benchmark and code: 238 memories, 18 requests, open source.
+        {/* Benchmark strip */}
+        <div className="mt-4 flex h-[60px] items-center rounded-2xl border border-line bg-panel px-8 text-[20px]">
+          <div className="flex items-center gap-3 pr-8">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden className="text-jev">
+              <path d="M7 4h10v5a5 5 0 0 1-10 0V4Z M7 6H4a3 3 0 0 0 3 4 M17 6h3a3 3 0 0 1-3 4 M12 14v4 M8 20h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="text-text">Benchmark</span>
+            <span className="text-muted">(same {memories.length} memories)</span>
+          </div>
+          <div className="flex flex-1 items-center gap-10 border-l border-line pl-10">
+            <span className="text-muted">
+              Jev <span className="ml-2 text-[24px] font-medium text-jev">{BENCHMARK.jev}</span>
+            </span>
+            <span className="text-muted">
+              Sonnet <span className="ml-2 text-[24px] font-medium text-sonnet">{BENCHMARK.sonnet}</span>
+            </span>
+            <span className="text-muted">
+              embeddings <span className="ml-2 text-[24px] font-medium text-embeddings">{BENCHMARK.embeddings}</span>
+            </span>
+          </div>
+          <div className="border-l border-line px-10 text-text">{BENCHMARK.faster}</div>
+          <div className="border-l border-line pl-10 text-text">{BENCHMARK.cost}</div>
         </div>
       </div>
-      {showKeys && (
-        <KeysDialog
-          initial={keys}
-          onClose={() => setShowKeys(false)}
-        />
-      )}
+      {showKeys && <KeysDialog initial={keys} onClose={() => setShowKeys(false)} />}
     </Stage>
-  );
-}
-
-function Stat({ label, value, sub, accent }: { label: string; value: string; sub: string; accent?: boolean }) {
-  return (
-    <div className="rounded-xl border border-line bg-panel px-4 py-1.5 text-right">
-      <div className="text-[10.5px] uppercase tracking-[0.14em] text-faint">{label}</div>
-      <div className={`tabular font-mono text-[18px] leading-tight ${accent ? "text-jev" : ""}`}>{value}</div>
-      <div className="text-[11px] text-muted">{sub}</div>
-    </div>
   );
 }

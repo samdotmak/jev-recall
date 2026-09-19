@@ -59,8 +59,8 @@ export function KeysDialog({ initial, onClose }: { initial: Keys; onClose: () =>
     onClose();
   };
   return (
-    <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => onClose()}>
-      <div className="w-[560px] rounded-2xl border border-line bg-panel p-7" onClick={(e) => e.stopPropagation()}>
+    <div className="absolute inset-0 z-50 flex items-center justify-center bg-slate-900/30 backdrop-blur-sm" onClick={() => onClose()}>
+      <div className="w-[560px] rounded-2xl border border-line bg-panel p-7 shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="text-[22px] font-semibold">Run it live with your own keys</div>
         <p className="mt-2 text-[14px] leading-relaxed text-muted">
           Without keys you see recorded live runs. Add all three keys to run the presets live or type your own request.
@@ -81,7 +81,7 @@ export function KeysDialog({ initial, onClose }: { initial: Keys; onClose: () =>
                 value={keys[f.id]}
                 placeholder={f.placeholder}
                 onChange={(e) => setKeys({ ...keys, [f.id]: e.target.value.trim() })}
-                className="mt-1.5 w-full rounded-lg border border-line bg-panel-2 px-3 py-2 font-mono text-[13px] outline-none focus:border-muted"
+                className="mt-1.5 w-full rounded-lg border border-line bg-panel-2 px-3 py-2 font-mono text-[13px] text-text outline-none focus:border-jev"
               />
             </label>
           ))}
@@ -94,7 +94,7 @@ export function KeysDialog({ initial, onClose }: { initial: Keys; onClose: () =>
           <button onClick={() => done({ ...EMPTY_KEYS })} className="text-[14px] text-muted hover:text-text">
             Forget keys
           </button>
-          <button onClick={() => done(keys)} className="rounded-lg bg-text px-5 py-2 text-[14px] font-semibold text-bg">
+          <button onClick={() => done(keys)} className="rounded-lg bg-text px-5 py-2 text-[14px] font-semibold text-white">
             Save
           </button>
         </div>
