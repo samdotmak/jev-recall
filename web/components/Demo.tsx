@@ -205,21 +205,20 @@ export function Demo({
 
   return (
     <Stage>
-      <div className="flex h-full flex-col px-10 pb-7 pt-8">
+      <div className="flex h-full flex-col px-10 pb-6 pt-6">
         {/* Headline + mode controls */}
         <div className="flex items-start justify-between gap-8">
           <div>
-            <div className="mb-3 flex gap-[3px]">
-              <span className="h-[5px] w-[22px] rounded-full bg-embeddings" />
-              <span className="h-[5px] w-[22px] rounded-full bg-sonnet" />
-              <span className="h-[5px] w-[22px] rounded-full bg-jev" />
-              <span className="h-[5px] w-[9px] rounded-full bg-accent" />
+            <div className="mb-3 flex gap-1.5">
+              <span className="h-2.5 w-2.5 bg-embeddings" />
+              <span className="h-2.5 w-2.5 bg-sonnet" />
+              <span className="h-2.5 w-2.5 bg-jev" />
             </div>
-            <h1 className="text-[40px] font-medium leading-[1.08] tracking-[-0.01em] text-text">
+            <h1 className="text-[34px] font-medium leading-[1.12] tracking-[-0.02em] text-text">
               <span className="font-bold">Jev Recall</span> catches the memories semantic search{" "}
-              <em className="underline decoration-accent decoration-[3px] underline-offset-[6px]">misses.</em>
+              <span className="border-b-2 border-accent pb-0.5">misses</span>.
             </h1>
-            <p className="mt-2 text-[19px] leading-snug text-muted">
+            <p className="mt-2 text-[16px] leading-snug text-muted">
               Same answers as Claude Sonnet 5, at a fraction of the time and cost.
             </p>
           </div>
@@ -227,7 +226,7 @@ export function Demo({
             <div className="flex shrink-0 items-center gap-3 pt-2">
               <button
                 onClick={() => setShowKeys(true)}
-                className="label rounded-full border border-line bg-panel px-3.5 py-1.5 !text-text hover:bg-panel-2"
+                className="label rounded-[2px] border border-line-strong bg-panel px-3.5 py-2 !text-text hover:bg-panel-2"
               >
                 {live ? "Keys" : "Run live with your keys"}
               </button>
@@ -237,18 +236,18 @@ export function Demo({
 
         {/* Preset nav */}
         {!present && (
-          <div className="mt-6 border-b border-line pb-2.5">
-            <div className="flex items-baseline gap-7">
+          <div className="mt-5 border-b border-line pb-2">
+            <div className="flex items-baseline gap-8">
               {presets.map((p) => {
                 const active = p.id === preset.id && isPreset;
                 return (
                   <button
                     key={p.id}
                     onClick={() => choose(p, false)}
-                    className={`relative pb-2.5 text-[16px] transition ${active ? "text-text" : "text-muted hover:text-text"}`}
+                    className={`relative pb-2 text-[14px] tracking-[-0.01em] transition ${active ? "text-text" : "text-muted hover:text-text"}`}
                   >
                     {p.label}
-                    {active && <span className="absolute inset-x-0 -bottom-[1px] h-[2px] rounded-full bg-accent" />}
+                    {active && <span className="absolute inset-x-0 -bottom-[9px] h-[2px] bg-accent" />}
                   </button>
                 );
               })}
@@ -257,14 +256,10 @@ export function Demo({
         )}
 
         {/* Request */}
-        <div className="mt-5 flex items-center gap-4">
-          <div className="flex h-[62px] w-[62px] shrink-0 items-center justify-center rounded-xl border border-line bg-panel text-accent">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-label="Your request" role="img">
-              <circle cx="12" cy="8" r="3.6" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M4.8 20c.6-3.8 3.6-6 7.2-6s6.6 2.2 7.2 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          </div>
-          <div className="flex h-[62px] flex-1 items-center rounded-xl border border-line bg-panel px-6">
+        <div className="mt-4 flex items-end gap-3">
+          <div className="flex-1">
+            <div className="label mb-1.5">Request</div>
+            <div className="flex h-[52px] items-center rounded-[2px] border border-line-strong bg-panel px-4">
             {editable ? (
               <input
                 value={request}
@@ -276,28 +271,27 @@ export function Demo({
                   setPhase("ready");
                 }}
                 onKeyDown={(ev) => ev.key === "Enter" && run(preset, request, { type: false })}
-                className="w-full bg-transparent text-[20px] text-text outline-none"
+                className="w-full bg-transparent text-[18px] text-text outline-none"
               />
             ) : (
-              <div className="text-[20px] text-text">
+              <div className="text-[18px] text-text">
                 {request.slice(0, typed)}
-                {phase === "typing" && <span className="caret ml-0.5 text-jev">▍</span>}
+                {phase === "typing" && <span className="caret ml-0.5 text-accent">▍</span>}
               </div>
             )}
+            </div>
           </div>
           <button
             onClick={() => run(preset, request, { type: false })}
             disabled={phase === "running" || phase === "typing" || !request.trim()}
-            className="flex h-[62px] shrink-0 items-center gap-3 rounded-xl bg-text px-8 text-[19px] font-medium text-[#faf8f2] transition hover:opacity-90 disabled:opacity-40"
+            className="flex h-[52px] shrink-0 items-center gap-3 rounded-[2px] bg-text px-7 text-[15px] font-medium tracking-[0.01em] text-panel transition hover:bg-[#333330] disabled:opacity-40"
           >
-            <svg width="14" height="16" viewBox="0 0 14 16" aria-hidden>
-              <path d="M1 1.5v13l12-6.5z" fill="currentColor" />
-            </svg>
+            <span className="h-2.5 w-2.5 bg-accent" />
             Run comparison
           </button>
         </div>
         {/* Scan field + results */}
-        <div className="mt-4 grid min-h-0 flex-1 grid-cols-[minmax(0,1fr)_600px] gap-5">
+        <div className="mt-4 grid min-h-0 flex-1 grid-cols-[minmax(0,1fr)_600px] gap-4">
           <ScanField
             memories={memories}
             scans={scans}
@@ -308,7 +302,7 @@ export function Demo({
             running={phase === "running"}
             highlightId={hoveredMemory}
           />
-          <div className="flex min-h-0 min-w-0 flex-col gap-3">
+          <div className="flex min-h-0 min-w-0 flex-col gap-2.5">
             {SYSTEMS.map((s) => (
               <ResultCard
                 key={s.id}
@@ -326,30 +320,30 @@ export function Demo({
         </div>
 
         {/* Results strip: this run once it finishes, the full benchmark before that */}
-        <div className="mt-4 flex h-[60px] items-center rounded-xl border border-line bg-panel px-8 text-[19px]">
-          <div className="flex items-center gap-3 pr-8">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden className="text-accent">
-              <path d="M7 4h10v5a5 5 0 0 1-10 0V4Z M7 6H4a3 3 0 0 0 3 4 M17 6h3a3 3 0 0 1-3 4 M12 14v4 M8 20h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+        <div className="mt-3 flex h-[56px] items-center rounded-[2px] border border-line bg-panel px-8">
+          <div className="flex items-baseline gap-3 pr-8">
             <span className="label !text-text">{runStats ? "This request" : "Benchmark"}</span>
-            <span className="text-[15px] text-muted">
+            <span className="text-[14px] text-muted">
               {runStats ? runStats.caption : `${BENCHMARK.requests} requests, ${memories.length} memories`}
             </span>
           </div>
           <div className="flex flex-1 items-center gap-10 border-l border-line pl-10">
             {SYSTEMS.map(({ id }) => (
-              <span key={id} className="text-muted">
-                {id === "sonnet" ? "Sonnet" : id === "embeddings" ? "Embeddings" : "Jev"}{" "}
-                <span className="tabular ml-2 text-[21px]" style={{ color: METHOD_COLOR[id] }}>
+              <span key={id} className="flex items-center gap-2.5">
+                <span className="h-2.5 w-2.5" style={{ background: METHOD_COLOR[id] }} />
+                <span className="text-[14px] text-muted">
+                  {id === "sonnet" ? "Sonnet" : id === "embeddings" ? "Embeddings" : "Jev"}
+                </span>
+                <span className="tabular text-[19px] font-medium text-text">
                   {runStats ? runStats.found[id] : BENCHMARK[id]}
                 </span>
               </span>
             ))}
           </div>
-          <div className="tabular border-l border-line px-10 text-[17px] text-text">
+          <div className="tabular border-l border-line px-10 text-[16px] font-medium text-text">
             {runStats ? runStats.faster : BENCHMARK.faster}
           </div>
-          <div className="tabular border-l border-line pl-10 text-[17px] text-text">
+          <div className="tabular border-l border-line pl-10 text-[16px] font-medium text-text">
             {runStats ? runStats.cost : BENCHMARK.cost}
           </div>
         </div>

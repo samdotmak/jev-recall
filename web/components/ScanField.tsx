@@ -61,17 +61,20 @@ export function ScanField({
   const hoverPos = shownIndex !== undefined && shownIndex !== null ? cellXY(shownIndex) : null;
 
   return (
-    <div className="flex h-full flex-col rounded-xl border border-line bg-panel px-8 pb-7 pt-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <span className="text-[22px] text-text">{headline}</span>
-          <span className="h-1.5 w-1.5 rounded-full bg-faint" />
-          <span className="tabular text-[23px] text-text">{(elapsedMs / 1000).toFixed(2)}s</span>
-          {running && <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-jev" />}
+    <div className="flex h-full flex-col rounded-[3px] border border-line bg-panel px-8 pb-7 pt-5">
+      <div className="flex items-end justify-between border-b border-line pb-3">
+        <div>
+          <div className="label">Memory field</div>
+          <div className="mt-1 text-[17px] text-text">{headline}</div>
         </div>
-        <div className="label flex items-center gap-2">
-          <span className="h-2.5 w-2.5 rounded-[3px] bg-cell" />
-          Each square is a memory
+        <div className="flex items-end gap-3">
+          {running && <span className="pulse-dot mb-[9px] h-2 w-2 bg-jev" />}
+          <div className="text-right">
+            <div className="label">Elapsed</div>
+            <div className="tabular mt-0.5 text-[26px] font-medium leading-none text-text">
+              {(elapsedMs / 1000).toFixed(2)}s
+            </div>
+          </div>
         </div>
       </div>
 
@@ -85,18 +88,14 @@ export function ScanField({
               <div
                 key={m.id}
                 onMouseEnter={() => setHover(i)}
-                className="absolute rounded-[6px] transition-colors duration-300 hover:brightness-95"
+                className="absolute rounded-[1px] transition-colors duration-200"
                 style={{
                   left: x,
                   top: y,
                   width: CELL,
                   height: CELL,
-                  background: isKey ? "var(--panel)" : "var(--cell)",
-                  boxShadow: isKey
-                    ? "0 0 0 2px var(--accent), 0 0 12px color-mix(in srgb, var(--accent) 40%, transparent)"
-                    : shownIndex === i
-                      ? "0 0 0 2px var(--text)"
-                      : undefined,
+                  background: isKey ? "var(--panel)" : shownIndex === i ? "var(--cell-hover)" : "var(--cell)",
+                  boxShadow: isKey ? "0 0 0 1.5px var(--accent)" : shownIndex === i ? "0 0 0 1.5px var(--text)" : undefined,
                 }}
               >
                 {pickedBy[m.id] && (
@@ -106,7 +105,7 @@ export function ScanField({
                       return (
                         <span
                           key={slot}
-                          className="h-[5px] w-[5px] rounded-full"
+                          className="h-[4px] w-[4px]"
                           style={{ background: sys ? METHOD_COLOR[sys] : "transparent" }}
                         />
                       );
@@ -141,26 +140,25 @@ export function ScanField({
               <div key={id}>
                 {sweeping && (
                   <div
-                    className="pointer-events-none absolute rounded-[6px]"
+                    className="pointer-events-none absolute rounded-[1px]"
                     style={{
                       top: pos.y,
                       left: Math.max(0, col - TRAIL) * PITCH,
                       width: Math.min(col, TRAIL) * PITCH + CELL,
                       height: CELL,
-                      background: `linear-gradient(90deg, transparent, color-mix(in srgb, ${color} 30%, transparent))`,
+                      background: `linear-gradient(90deg, transparent, color-mix(in srgb, ${color} 22%, transparent))`,
                     }}
                   />
                 )}
                 <div
-                  className="pointer-events-none absolute left-0 top-0 rounded-[8px] border-[3px]"
+                  className="pointer-events-none absolute left-0 top-0 rounded-[2px] border-2"
                   style={{
                     transform: `translate3d(${pos.x - 4 + inset}px, ${pos.y - 4 + inset}px, 0)`,
                     transition: sweeping ? "none" : "transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1)",
                     width: CELL + 8 - inset * 2,
                     height: CELL + 8 - inset * 2,
                     borderColor: color,
-                    background: inset ? "transparent" : `color-mix(in srgb, ${color} 20%, transparent)`,
-                    boxShadow: `0 0 14px color-mix(in srgb, ${color} 40%, transparent)`,
+                    background: inset ? "transparent" : `color-mix(in srgb, ${color} 16%, transparent)`,
                     zIndex: id === "jev" ? 3 : 2,
                   }}
                 />
@@ -171,7 +169,7 @@ export function ScanField({
           {/* hover readout */}
           {hovered && hoverPos && (
             <div
-              className="pointer-events-none absolute z-20 max-w-[420px] rounded-lg border border-line bg-panel px-3 py-2 text-[14px] leading-snug text-text shadow-[0_8px_24px_rgba(22,21,15,0.14)]"
+              className="pointer-events-none absolute z-20 max-w-[420px] rounded-[2px] border border-line-strong bg-panel/95 px-3 py-2 text-[13.5px] leading-snug text-text backdrop-blur-[2px]"
               style={{
                 left: Math.min(Math.max(hoverPos.x + CELL / 2, 210), width - 210),
                 top: hoverPos.y > 70 ? hoverPos.y - 12 : hoverPos.y + CELL + 12,
@@ -192,7 +190,7 @@ export function ScanField({
               const above = y > 60;
               return (
                 <div
-                  className="fade-up absolute z-10 whitespace-nowrap rounded-lg border border-accent/30 bg-accent/12 px-3 py-1.5 text-[15px] text-accent shadow-[0_6px_18px_rgba(22,21,15,0.10)]"
+                  className="fade-up label absolute z-10 whitespace-nowrap rounded-[2px] border border-accent/40 bg-accent/10 px-2.5 py-1.5 !text-accent"
                   style={{
                     animationDelay: "450ms",
                     left: Math.min(Math.max(x + CELL / 2, 120), width - 120),

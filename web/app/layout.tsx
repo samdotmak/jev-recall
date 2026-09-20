@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Newsreader } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const serif = Newsreader({ variable: "--font-serif", subsets: ["latin"], style: ["normal", "italic"] });
-const mono = IBM_Plex_Mono({ variable: "--font-mono", subsets: ["latin"], weight: ["400", "500"] });
+const sans = Inter({ variable: "--font-sans", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Jev Recall · Catches the memories semantic search misses",
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${serif.variable} ${mono.variable} antialiased`}>
+    <html lang="en" className={`${sans.variable} antialiased`}>
       <body>{children}</body>
     </html>
   );

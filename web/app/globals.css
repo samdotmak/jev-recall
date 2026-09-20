@@ -1,21 +1,23 @@
 @import "tailwindcss";
 
-/* Warm paper-and-ink palette: off-white stock, near-black ink, serif display,
-   monospace for labels and figures. Method colors are muted to match. */
+/* Braun / Dieter Rams system: neutral gray panels, hairline rules, one functional
+   orange accent, a single neutral grotesk, numerals in tabular figures. */
 :root {
-  --bg: #f1eee5;
-  --panel: #faf8f2;
-  --panel-2: #f4f1e8;
-  --cell: #e3dfd2;
-  --line: rgba(22, 21, 18, 0.14);
-  --text: #16150f;
-  --muted: #6d6758;
-  --faint: #9b9484;
-  --embeddings: #3a6ea5;
-  --sonnet: #c2613a;
-  --jev: #2f7f6b;
-  --jev-ink: #235f50;
-  --accent: #9c2f26; /* oxblood: brand marks and "the memory that matters" */
+  --bg: #e6e6e3;
+  --panel: #f5f5f3;
+  --panel-2: #eeeeec;
+  --cell: #dcdcd8;
+  --cell-hover: #c9c9c4;
+  --line: #d0d0cb;
+  --line-strong: #b4b4ae;
+  --text: #1c1c1a;
+  --muted: #6f6f6a;
+  --faint: #9a9a94;
+  --embeddings: #64798a; /* baseline: cool blue-gray */
+  --sonnet: #33383b; /* graphite */
+  --jev: #e2571e; /* Braun orange */
+  --jev-ink: #b8430f;
+  --accent: #e2571e;
 }
 
 @theme inline {
@@ -24,6 +26,7 @@
   --color-panel-2: var(--panel-2);
   --color-cell: var(--cell);
   --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
   --color-text: var(--text);
   --color-muted: var(--muted);
   --color-faint: var(--faint);
@@ -32,9 +35,8 @@
   --color-jev: var(--jev);
   --color-jev-ink: var(--jev-ink);
   --color-accent: var(--accent);
-  --font-sans: var(--font-serif);
-  --font-serif: var(--font-serif);
-  --font-mono: var(--font-mono);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-sans);
 }
 
 html,
@@ -42,22 +44,23 @@ body {
   height: 100%;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  font-feature-settings: "tnum" 1, "cv05" 1;
   overflow: hidden;
 }
 
-/* Small uppercase monospace labels, as on the reference spec sheet. */
+/* Equipment labels: small, uppercase, letter-spaced, like panel silkscreen. */
 .label {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.12em;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
 .tabular {
-  font-family: var(--font-mono), ui-monospace, monospace;
   font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
 }
 
 @keyframes caret {
@@ -83,12 +86,12 @@ body {
   animation: shimmer 1.2s linear infinite;
 }
 
-/* Entrance animations run as CSS, not JS: they keep playing even when the
-   rAF-driven animation loop is throttled (long screen recordings, background tabs). */
+/* Entrance animations run as CSS so they keep playing when the JS animation
+   loop is throttled (long screen recordings, background tabs). */
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -96,12 +99,12 @@ body {
   }
 }
 .fade-up {
-  animation: fade-up 0.42s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  animation: fade-up 0.36s cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
 
 @keyframes pulse-dot {
   50% {
-    opacity: 0.2;
+    opacity: 0.25;
   }
 }
 .pulse-dot {
