@@ -37,6 +37,7 @@ export function ResultCard({
   memoryById,
   keyIds,
   keyLabel,
+  onHoverMemory,
 }: {
   id: SystemId;
   name: string;
@@ -45,6 +46,7 @@ export function ResultCard({
   memoryById: Record<string, Memory>;
   keyIds: string[];
   keyLabel: string;
+  onHoverMemory: (id: string | null) => void;
 }) {
   const color = METHOD_COLOR[id];
   const r = state.status === "done" ? state.result : undefined;
@@ -99,11 +101,13 @@ export function ResultCard({
         {rows.map((row, i) => {
             const score = row.kind !== "miss" ? r?.scores?.[row.id] : undefined;
             const tinted = row.kind === "hit";
-            const full = row.kind === "miss" ? keyIds.map((k) => memoryById[k]?.text).join(" ") : memoryById[row.id]?.text;
+            const hoverId = row.kind === "miss" ? keyIds[0] : row.id;
             return (
               <div
                 key={`${id}-${row.id}`}
-                className="fade-up group relative flex h-[42px] shrink-0 items-center gap-3 rounded-xl border px-3"
+                onMouseEnter={() => onHoverMemory(hoverId)}
+                onMouseLeave={() => onHoverMemory(null)}
+                className="fade-up flex h-[42px] shrink-0 cursor-default items-center gap-3 rounded-xl border px-3 transition-colors"
                 style={{
                   animationDelay: `${80 + i * 120}ms`,
                   borderColor: tinted ? `color-mix(in srgb, ${color} 30%, transparent)` : "var(--line)",
@@ -114,15 +118,6 @@ export function ResultCard({
                       : "var(--panel)",
                 }}
               >
-                {full && (
-                  <div
-                    className={`pointer-events-none absolute inset-x-0 z-50 rounded-lg border border-line bg-panel px-3 py-2 text-[14px] leading-snug text-text opacity-0 shadow-[0_8px_24px_rgba(22,21,15,0.14)] transition-opacity duration-150 group-hover:opacity-100 ${
-                      i === 0 ? "top-[calc(100%+6px)]" : "bottom-[calc(100%+6px)]"
-                    }`}
-                  >
-                    {full}
-                  </div>
-                )}
                 {row.kind === "miss" ? <MissIcon /> : <DocIcon />}
                 <div className="min-w-0 flex-1">
                   {row.kind === "miss" ? (

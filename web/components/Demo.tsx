@@ -48,6 +48,7 @@ export function Demo({
   const [cards, setCards] = useState<Cards>(IDLE);
   const [clock, setClock] = useState(0);
   const [showKeys, setShowKeys] = useState(false);
+  const [hoveredMemory, setHoveredMemory] = useState<string | null>(null);
   const keys = useKeys();
   const runId = useRef(0);
 
@@ -214,9 +215,8 @@ export function Demo({
               <span className="h-[5px] w-[22px] rounded-full bg-jev" />
               <span className="h-[5px] w-[9px] rounded-full bg-accent" />
             </div>
-            <h1 className="text-[40px] font-semibold leading-[1.08] tracking-[-0.01em] text-text">
-              <span className="rounded-[4px] bg-jev/15 px-1.5 pb-0.5 decoration-clone">Jev Recall</span> catches the
-              memories semantic search{" "}
+            <h1 className="text-[40px] font-medium leading-[1.08] tracking-[-0.01em] text-text">
+              <span className="font-bold">Jev Recall</span> catches the memories semantic search{" "}
               <em className="underline decoration-accent decoration-[3px] underline-offset-[6px]">misses.</em>
             </h1>
             <p className="mt-2 text-[19px] leading-snug text-muted">
@@ -306,6 +306,7 @@ export function Demo({
             headline={headline}
             elapsedMs={clock}
             running={phase === "running"}
+            highlightId={hoveredMemory}
           />
           <div className="flex min-h-0 min-w-0 flex-col gap-3">
             {SYSTEMS.map((s) => (
@@ -318,6 +319,7 @@ export function Demo({
                 memoryById={memoryById}
                 keyIds={keyIds}
                 keyLabel={preset.keyLabel}
+                onHoverMemory={setHoveredMemory}
               />
             ))}
           </div>

@@ -29,6 +29,7 @@ export function ScanField({
   headline,
   elapsedMs,
   running,
+  highlightId,
 }: {
   memories: Memory[];
   scans: Record<SystemId, Scan>;
@@ -37,6 +38,7 @@ export function ScanField({
   headline: string;
   elapsedMs: number;
   running: boolean;
+  highlightId: string | null; // memory hovered in the results column
 }) {
   const [hover, setHover] = useState<number | null>(null);
   const index = Object.fromEntries(memories.map((m, i) => [m.id, i]));
@@ -54,8 +56,9 @@ export function ScanField({
     for (const id of scans[s.id].picks) (pickedBy[id] ??= []).push(s.id);
   }
 
-  const hovered = hover !== null ? memories[hover] : null;
-  const hoverPos = hover !== null ? cellXY(hover) : null;
+  const shownIndex = highlightId !== null ? index[highlightId] : hover;
+  const hovered = shownIndex !== undefined && shownIndex !== null ? memories[shownIndex] : null;
+  const hoverPos = shownIndex !== undefined && shownIndex !== null ? cellXY(shownIndex) : null;
 
   return (
     <div className="flex h-full flex-col rounded-xl border border-line bg-panel px-8 pb-7 pt-6">
@@ -91,8 +94,8 @@ export function ScanField({
                   background: isKey ? "var(--panel)" : "var(--cell)",
                   boxShadow: isKey
                     ? "0 0 0 2px var(--accent), 0 0 12px color-mix(in srgb, var(--accent) 40%, transparent)"
-                    : hover === i
-                      ? "0 0 0 2px var(--faint)"
+                    : shownIndex === i
+                      ? "0 0 0 2px var(--text)"
                       : undefined,
                 }}
               >
