@@ -7,8 +7,7 @@ Jev Recall gives you LLM re-ranker quality retreival at semantic search prices a
 Given a user query and a pile of memories, jev recalls returns the most relevant memories, judged by
 [TypeSafe's Jev](https://typesafe.ai) model, one calibrated yes/no per memory, in a single request.
 
-<!-- TODO: replace with the recorded demo GIF -->
-![Jev Recall demo](docs/demo.gif)
+![Jev Recall: three methods search the same 238 memories. Semantic search misses a guest's nut allergy; Claude Sonnet 5 and Jev Recall both find it, Jev in 0.34s for $0.00044.](docs/demo.gif)
 
 **[Try the live demo →](https://jev-recall.vercel.app)** · replays real runs, or runs live with your own API keys.
 

@@ -1,1 +1,1 @@
-Put `demo.gif` here; the root README links to `docs/demo.gif`.
+`demo.gif` is the recording linked from the root README.
