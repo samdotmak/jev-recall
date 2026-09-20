@@ -1,5 +1,4 @@
 "use client";
-import { AnimatePresence, motion } from "motion/react";
 import { METHOD_COLOR, formatCost } from "@/lib/format";
 import type { Memory, RunResult, SystemId } from "@/lib/types";
 
@@ -62,14 +61,14 @@ export function ResultCard({
   ].slice(0, ROWS);
 
   return (
-    <div className="flex min-h-0 w-full min-w-0 flex-1 flex-col rounded-2xl border border-line bg-panel px-5 py-3.5">
+    <div className="flex min-h-0 w-full min-w-0 flex-1 flex-col rounded-xl border border-line bg-panel px-5 py-3.5">
       <div className="flex items-start">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-3">
             <span className="h-[18px] w-[18px] rounded-full" style={{ background: color }} />
-            <span className="text-[19px] font-semibold tracking-tight text-text">{name}</span>
+            <span className="text-[20px] font-semibold text-text">{name}</span>
           </div>
-          <div className="ml-[30px] mt-0.5 text-[13px] text-muted">
+          <div className="ml-[30px] mt-0.5 text-[14px] text-muted">
             {method}
             {r && (
               <span className="ml-2 text-text">
@@ -82,14 +81,14 @@ export function ResultCard({
         </div>
         <div className="flex">
           <div className="w-[86px] border-l border-line pl-4">
-            <div className="text-[13px] text-muted">Time</div>
-            <div className="tabular text-[19px] text-text">
+            <div className="label">Time</div>
+            <div className="tabular mt-0.5 text-[18px] text-text">
               {state.status === "idle" ? "–" : `${(state.elapsedMs / 1000).toFixed(2)}s`}
             </div>
           </div>
           <div className="w-[118px] border-l border-line pl-4">
-            <div className="text-[13px] text-muted">Cost</div>
-            <div className="tabular text-[19px] text-text">{r ? formatCost(r.costUsd) : "–"}</div>
+            <div className="label">Cost</div>
+            <div className="tabular mt-0.5 text-[18px] text-text">{r ? formatCost(r.costUsd) : "–"}</div>
           </div>
         </div>
       </div>
@@ -97,49 +96,57 @@ export function ResultCard({
       <div className="mt-2.5 flex min-h-0 flex-1 flex-col gap-1.5">
         {state.status === "running" &&
           [0, 1].map((i) => <div key={i} className="skeleton h-[42px] shrink-0 rounded-xl" />)}
-        <AnimatePresence>
-          {rows.map((row, i) => {
+        {rows.map((row, i) => {
             const score = row.kind !== "miss" ? r?.scores?.[row.id] : undefined;
             const tinted = row.kind === "hit";
+            const full = row.kind === "miss" ? keyIds.map((k) => memoryById[k]?.text).join(" ") : memoryById[row.id]?.text;
             return (
-              <motion.div
+              <div
                 key={`${id}-${row.id}`}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.08 + i * 0.12 }}
-                className="flex h-[42px] shrink-0 items-center gap-3 rounded-xl border px-3"
+                className="fade-up group relative flex h-[42px] shrink-0 items-center gap-3 rounded-xl border px-3"
                 style={{
+                  animationDelay: `${80 + i * 120}ms`,
                   borderColor: tinted ? `color-mix(in srgb, ${color} 30%, transparent)` : "var(--line)",
-                  background: tinted ? `color-mix(in srgb, ${color} 9%, white)` : row.kind === "miss" ? "var(--panel-2)" : "white",
+                  background: tinted
+                    ? `color-mix(in srgb, ${color} 12%, var(--panel))`
+                    : row.kind === "miss"
+                      ? "var(--panel-2)"
+                      : "var(--panel)",
                 }}
               >
+                {full && (
+                  <div
+                    className={`pointer-events-none absolute inset-x-0 z-50 rounded-lg border border-line bg-panel px-3 py-2 text-[14px] leading-snug text-text opacity-0 shadow-[0_8px_24px_rgba(22,21,15,0.14)] transition-opacity duration-150 group-hover:opacity-100 ${
+                      i === 0 ? "top-[calc(100%+6px)]" : "bottom-[calc(100%+6px)]"
+                    }`}
+                  >
+                    {full}
+                  </div>
+                )}
                 {row.kind === "miss" ? <MissIcon /> : <DocIcon />}
                 <div className="min-w-0 flex-1">
                   {row.kind === "miss" ? (
                     <>
-                      <div className="truncate text-[14px] text-muted">
+                      <div className="truncate text-[15px] text-muted">
                         {keyLabel.charAt(0).toUpperCase() + keyLabel.slice(1)}
-                        <span className="ml-2 text-[13px] text-faint">Doesn&apos;t find this detail.</span>
+                        <span className="ml-2 text-[14px] text-faint">Doesn&apos;t find this detail.</span>
                       </div>
                     </>
                   ) : (
-                    <div className="truncate text-[14px] text-text">{memoryById[row.id]?.text}</div>
+                    <div className="truncate text-[15px] text-text">{memoryById[row.id]?.text}</div>
                   )}
                 </div>
                 {score !== undefined && tinted && (
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 + i * 0.12 }}
-                    className="tabular shrink-0 text-[14px] font-medium text-jev-ink"
+                  <span
+                    className="fade-up tabular shrink-0 text-[13px] text-jev-ink"
+                    style={{ animationDelay: `${500 + i * 120}ms` }}
                   >
                     Relevance {score.toFixed(2)}
-                  </motion.span>
+                  </span>
                 )}
-              </motion.div>
+              </div>
             );
           })}
-        </AnimatePresence>
       </div>
     </div>
   );

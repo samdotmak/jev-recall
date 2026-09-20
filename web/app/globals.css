@@ -1,20 +1,21 @@
 @import "tailwindcss";
 
-/* Light "scientific instrument" theme from the Shared Scanfield handoff.
-   Method colors are fixed across scanners, timers and result cards. */
+/* Warm paper-and-ink palette: off-white stock, near-black ink, serif display,
+   monospace for labels and figures. Method colors are muted to match. */
 :root {
-  --bg: #f6f7f9;
-  --panel: #ffffff;
-  --panel-2: #f8fafc;
-  --cell: #eceef2;
-  --line: rgba(15, 23, 42, 0.08);
-  --text: #0f172a;
-  --muted: #64748b;
-  --faint: #94a3b8;
-  --embeddings: #3b82f6;
-  --sonnet: #f97316;
-  --jev: #14b8a6;
-  --jev-ink: #0f766e;
+  --bg: #f1eee5;
+  --panel: #faf8f2;
+  --panel-2: #f4f1e8;
+  --cell: #e3dfd2;
+  --line: rgba(22, 21, 18, 0.14);
+  --text: #16150f;
+  --muted: #6d6758;
+  --faint: #9b9484;
+  --embeddings: #3a6ea5;
+  --sonnet: #c2613a;
+  --jev: #2f7f6b;
+  --jev-ink: #235f50;
+  --accent: #9c2f26; /* oxblood: brand marks and "the memory that matters" */
 }
 
 @theme inline {
@@ -30,8 +31,10 @@
   --color-sonnet: var(--sonnet);
   --color-jev: var(--jev);
   --color-jev-ink: var(--jev-ink);
-  --font-sans: var(--font-onest);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-serif);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
 }
 
 html,
@@ -39,11 +42,21 @@ body {
   height: 100%;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-onest), system-ui, sans-serif;
+  font-family: var(--font-serif), Georgia, serif;
   overflow: hidden;
 }
 
+/* Small uppercase monospace labels, as on the reference spec sheet. */
+.label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 .tabular {
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-variant-numeric: tabular-nums;
 }
 
@@ -65,7 +78,32 @@ body {
   }
 }
 .skeleton {
-  background: linear-gradient(90deg, var(--cell) 0px, #f8fafc 80px, var(--cell) 160px);
+  background: linear-gradient(90deg, var(--cell) 0px, var(--panel-2) 80px, var(--cell) 160px);
   background-size: 400px 100%;
   animation: shimmer 1.2s linear infinite;
+}
+
+/* Entrance animations run as CSS, not JS: they keep playing even when the
+   rAF-driven animation loop is throttled (long screen recordings, background tabs). */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-up {
+  animation: fade-up 0.42s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+@keyframes pulse-dot {
+  50% {
+    opacity: 0.2;
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 0.9s ease-in-out infinite;
 }

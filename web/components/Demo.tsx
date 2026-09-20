@@ -1,6 +1,7 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Preset } from "@/data/presets";
+import { METHOD_COLOR } from "@/lib/format";
 import { KEY_HEADERS, SYSTEMS, type Memory, type RunResult, type SystemId } from "@/lib/types";
 import { KeysDialog, useKeys } from "./KeysDialog";
 import { ResultCard, type CardState } from "./ResultCard";
@@ -19,7 +20,14 @@ const IDLE: Cards = {
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 // From the benchmark in bench/ (README): 238 memories, 18 requests, 20 key memories.
-const BENCHMARK = { jev: "19/20", sonnet: "19/20", embeddings: "4/20", faster: "~22× faster", cost: "~1/46 cost" };
+const BENCHMARK = {
+  requests: 18,
+  jev: "19/20",
+  sonnet: "19/20",
+  embeddings: "4/20",
+  faster: "~22× faster",
+  cost: "~1/46 the cost",
+};
 
 export function Demo({
   memories,
@@ -171,32 +179,55 @@ export function Demo({
     }),
   ) as Record<SystemId, Scan>;
 
+  const done = phase === "done";
+  const sonnetRun = cards.sonnet.result;
+  const jevRun = cards.jev.result;
+  const runStats =
+    done && sonnetRun && jevRun && keyIds.length > 0
+      ? {
+          caption: `${keyIds.length === 1 ? "1 key memory" : `${keyIds.length} key memories`} to find`,
+          found: Object.fromEntries(
+            SYSTEMS.map(({ id }) => {
+              const r = cards[id].result;
+              const hit = r ? keyIds.filter((k) => r.ids.includes(k)).length : 0;
+              return [id, `${hit}/${keyIds.length}`];
+            }),
+          ) as Record<SystemId, string>,
+          faster: `${Math.round(cards.sonnet.elapsedMs / Math.max(cards.jev.elapsedMs, 1))}× faster`,
+          cost: `1/${Math.round(sonnetRun.costUsd / Math.max(jevRun.costUsd, 1e-9))} the cost`,
+        }
+      : null;
+
   const headline =
     phase === "running" ? `Scanning ${memories.length} memories…` : phase === "done" ? `Scanned ${memories.length} memories` : `${memories.length} memories`;
-  const recordedAt = replays[preset.id]?.recordedAt;
   const editable = live && !present && phase !== "running" && phase !== "typing";
 
   return (
     <Stage>
-      <div className="flex h-full flex-col px-10 pb-7 pt-6">
-        {/* Brand */}
-        <div className="flex h-9 items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg border-[1.5px] border-[#cbd2dc] bg-white text-[17px] font-medium text-text">
-              J
+      <div className="flex h-full flex-col px-10 pb-7 pt-8">
+        {/* Headline + mode controls */}
+        <div className="flex items-start justify-between gap-8">
+          <div>
+            <div className="mb-3 flex gap-[3px]">
+              <span className="h-[5px] w-[22px] rounded-full bg-embeddings" />
+              <span className="h-[5px] w-[22px] rounded-full bg-sonnet" />
+              <span className="h-[5px] w-[22px] rounded-full bg-jev" />
+              <span className="h-[5px] w-[9px] rounded-full bg-accent" />
             </div>
-            <div className="text-[19px] font-medium text-text">Jev Recall</div>
+            <h1 className="text-[40px] font-semibold leading-[1.08] tracking-[-0.01em] text-text">
+              <span className="rounded-[4px] bg-jev/15 px-1.5 pb-0.5 decoration-clone">Jev Recall</span> catches the
+              memories semantic search{" "}
+              <em className="underline decoration-accent decoration-[3px] underline-offset-[6px]">misses.</em>
+            </h1>
+            <p className="mt-2 text-[19px] leading-snug text-muted">
+              Same answers as Claude Sonnet 5, at a fraction of the time and cost.
+            </p>
           </div>
           {!present && (
-            <div className="flex items-center gap-3 text-[13px]">
-              <span className="text-faint">
-                {live
-                  ? "Live with your keys"
-                  : `Replaying a live run${recordedAt ? ` from ${new Date(recordedAt + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" })}` : ""}`}
-              </span>
+            <div className="flex shrink-0 items-center gap-3 pt-2">
               <button
                 onClick={() => setShowKeys(true)}
-                className="rounded-full border border-line bg-white px-3.5 py-1.5 text-text shadow-sm hover:border-[#cbd2dc]"
+                className="label rounded-full border border-line bg-panel px-3.5 py-1.5 !text-text hover:bg-panel-2"
               >
                 {live ? "Keys" : "Run live with your keys"}
               </button>
@@ -204,16 +235,36 @@ export function Demo({
           )}
         </div>
 
-        <h1 className="mt-2 text-[42px] font-bold leading-[1.1] tracking-[-0.02em] text-text">
-          See what each method <span className="text-faint">finds.</span>
-        </h1>
+        {/* Preset nav */}
+        {!present && (
+          <div className="mt-6 border-b border-line pb-2.5">
+            <div className="flex items-baseline gap-7">
+              {presets.map((p) => {
+                const active = p.id === preset.id && isPreset;
+                return (
+                  <button
+                    key={p.id}
+                    onClick={() => choose(p, false)}
+                    className={`relative pb-2.5 text-[16px] transition ${active ? "text-text" : "text-muted hover:text-text"}`}
+                  >
+                    {p.label}
+                    {active && <span className="absolute inset-x-0 -bottom-[1px] h-[2px] rounded-full bg-accent" />}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Request */}
-        <div className="mt-4 flex items-center gap-4">
-          <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border border-line bg-white text-[15px] text-muted">
-            You
+        <div className="mt-5 flex items-center gap-4">
+          <div className="flex h-[62px] w-[62px] shrink-0 items-center justify-center rounded-xl border border-line bg-panel text-accent">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-label="Your request" role="img">
+              <circle cx="12" cy="8" r="3.6" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M4.8 20c.6-3.8 3.6-6 7.2-6s6.6 2.2 7.2 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
           </div>
-          <div className="flex h-[62px] flex-1 items-center rounded-2xl border border-[#dde2e9] bg-white px-6 shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
+          <div className="flex h-[62px] flex-1 items-center rounded-xl border border-line bg-panel px-6">
             {editable ? (
               <input
                 value={request}
@@ -237,7 +288,7 @@ export function Demo({
           <button
             onClick={() => run(preset, request, { type: false })}
             disabled={phase === "running" || phase === "typing" || !request.trim()}
-            className="flex h-[62px] shrink-0 items-center gap-3 rounded-2xl border border-[#99e6d8] bg-[#d5f5ef] px-7 text-[19px] font-semibold text-text transition hover:bg-[#c3f0e7] disabled:opacity-60"
+            className="flex h-[62px] shrink-0 items-center gap-3 rounded-xl bg-text px-8 text-[19px] font-medium text-[#faf8f2] transition hover:opacity-90 disabled:opacity-40"
           >
             <svg width="14" height="16" viewBox="0 0 14 16" aria-hidden>
               <path d="M1 1.5v13l12-6.5z" fill="currentColor" />
@@ -245,25 +296,6 @@ export function Demo({
             Run comparison
           </button>
         </div>
-        {!present && (
-          <div className="ml-[68px] mt-2.5 flex gap-2">
-            {presets.map((p, i) => (
-              <button
-                key={p.id}
-                onClick={() => choose(p, false)}
-                className={`rounded-full border px-3 py-1 text-[13px] transition ${
-                  p.id === preset.id && isPreset
-                    ? "border-[#cbd2dc] bg-white text-text shadow-sm"
-                    : "border-transparent text-muted hover:text-text"
-                }`}
-              >
-                <span className="mr-1.5 text-faint">{i + 1}</span>
-                {p.label}
-              </button>
-            ))}
-          </div>
-        )}
-
         {/* Scan field + results */}
         <div className="mt-4 grid min-h-0 flex-1 grid-cols-[minmax(0,1fr)_600px] gap-5">
           <ScanField
@@ -291,28 +323,33 @@ export function Demo({
           </div>
         </div>
 
-        {/* Benchmark strip */}
-        <div className="mt-4 flex h-[60px] items-center rounded-2xl border border-line bg-panel px-8 text-[20px]">
+        {/* Results strip: this run once it finishes, the full benchmark before that */}
+        <div className="mt-4 flex h-[60px] items-center rounded-xl border border-line bg-panel px-8 text-[19px]">
           <div className="flex items-center gap-3 pr-8">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden className="text-jev">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden className="text-accent">
               <path d="M7 4h10v5a5 5 0 0 1-10 0V4Z M7 6H4a3 3 0 0 0 3 4 M17 6h3a3 3 0 0 1-3 4 M12 14v4 M8 20h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className="text-text">Benchmark</span>
-            <span className="text-muted">(same {memories.length} memories)</span>
+            <span className="label !text-text">{runStats ? "This request" : "Benchmark"}</span>
+            <span className="text-[15px] text-muted">
+              {runStats ? runStats.caption : `${BENCHMARK.requests} requests, ${memories.length} memories`}
+            </span>
           </div>
           <div className="flex flex-1 items-center gap-10 border-l border-line pl-10">
-            <span className="text-muted">
-              Jev <span className="ml-2 text-[24px] font-medium text-jev">{BENCHMARK.jev}</span>
-            </span>
-            <span className="text-muted">
-              Sonnet <span className="ml-2 text-[24px] font-medium text-sonnet">{BENCHMARK.sonnet}</span>
-            </span>
-            <span className="text-muted">
-              embeddings <span className="ml-2 text-[24px] font-medium text-embeddings">{BENCHMARK.embeddings}</span>
-            </span>
+            {SYSTEMS.map(({ id }) => (
+              <span key={id} className="text-muted">
+                {id === "sonnet" ? "Sonnet" : id === "embeddings" ? "Embeddings" : "Jev"}{" "}
+                <span className="tabular ml-2 text-[21px]" style={{ color: METHOD_COLOR[id] }}>
+                  {runStats ? runStats.found[id] : BENCHMARK[id]}
+                </span>
+              </span>
+            ))}
           </div>
-          <div className="border-l border-line px-10 text-text">{BENCHMARK.faster}</div>
-          <div className="border-l border-line pl-10 text-text">{BENCHMARK.cost}</div>
+          <div className="tabular border-l border-line px-10 text-[17px] text-text">
+            {runStats ? runStats.faster : BENCHMARK.faster}
+          </div>
+          <div className="tabular border-l border-line pl-10 text-[17px] text-text">
+            {runStats ? runStats.cost : BENCHMARK.cost}
+          </div>
         </div>
       </div>
       {showKeys && <KeysDialog initial={keys} onClose={() => setShowKeys(false)} />}

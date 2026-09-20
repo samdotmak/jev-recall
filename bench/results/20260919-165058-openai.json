@@ -1,0 +1,33 @@
+{
+  "when": "2026-09-19T16:50:53",
+  "k": 5,
+  "threshold": 0.5,
+  "n_memories": 238,
+  "results": {
+    "openai": [
+      {
+        "scenario": "none_math",
+        "got": [
+          "parking",
+          "q3_okr",
+          "pto",
+          "laptop",
+          "alarm"
+        ],
+        "found": [],
+        "missed": [],
+        "noise": [
+          "parking",
+          "q3_okr",
+          "pto",
+          "laptop",
+          "alarm"
+        ],
+        "returned": 5,
+        "pass": false,
+        "latency_s": 0.5623054999887245,
+        "cost_usd": 1.17e-06
+      }
+    ]
+  }
+}

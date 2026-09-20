@@ -155,7 +155,7 @@ mom_garden | Mom's roses have won ribbons at the county fair.
 sister | User's younger sister Maya lives in Brooklyn and works in publishing.
 maya_visit | Maya is visiting for a week in early November.
 college | User went to UCLA and studied economics.
-mba | User did an MBA at Kellogg.
+mba | User did an MBA a few years after college.
 languages | User speaks English and conversational Spanish.
 volunteering | User volunteers at the SF-Marin Food Bank once a month.
 donation | User gives monthly to KQED.

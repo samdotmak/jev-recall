@@ -1,6 +1,22 @@
 {
  "party_tart": {
   "recordedAt": "2026-09-19",
+  "jev": {
+   "ids": [
+    "leo_allergy",
+    "party_menu",
+    "tartine_cake"
+   ],
+   "scores": {
+    "leo_allergy": 0.93,
+    "party_menu": 0.77,
+    "tartine_cake": 0.62
+   },
+   "latencyMs": 368.33912499999997,
+   "costUsd": 0.00043575,
+   "inputTokens": 10375,
+   "outputTokens": 4526
+  },
   "embeddings": {
    "ids": [
     "tartine_cake",
@@ -9,58 +25,24 @@
     "sam_bday_nopa",
     "party_guests"
    ],
-   "latencyMs": 295.44437500000004,
+   "latencyMs": 193.27591699999994,
    "costUsd": 0.00000221,
    "inputTokens": 17,
    "outputTokens": 0
   },
-  "jev": {
-   "ids": [
-    "leo_allergy",
-    "party_menu",
-    "tartine_cake",
-    "card_stolen",
-    "amex"
-   ],
-   "scores": {
-    "card_stolen": 0.54,
-    "leo_allergy": 0.93,
-    "party_menu": 0.77,
-    "tartine_cake": 0.6,
-    "amex": 0.5
-   },
-   "latencyMs": 338.0672919999997,
-   "costUsd": 0.0004356660000000001,
-   "inputTokens": 10373,
-   "outputTokens": 4526
-  },
   "sonnet": {
    "ids": [
     "party_guests",
-    "leo_allergy",
-    "party_menu"
+    "leo_allergy"
    ],
-   "latencyMs": 4706.296709,
-   "costUsd": 0.017684,
-   "inputTokens": 7217,
-   "outputTokens": 325
+   "latencyMs": 7282.527083999999,
+   "costUsd": 0.019932,
+   "inputTokens": 7216,
+   "outputTokens": 550
   }
  },
  "dad_birthday": {
   "recordedAt": "2026-09-19",
-  "embeddings": {
-   "ids": [
-    "dad_70",
-    "offsite_dinner",
-    "sam_bday_nopa",
-    "dad_kokkari",
-    "party_guests"
-   ],
-   "latencyMs": 219.18404100000043,
-   "costUsd": 0.0000036400000000000003,
-   "inputTokens": 28,
-   "outputTokens": 0
-  },
   "jev": {
    "ids": [
     "dad_stent",
@@ -73,36 +55,90 @@
    ],
    "scores": {
     "dad_stent": 0.93,
-    "mom_wheelchair": 0.73,
+    "mom_wheelchair": 0.71,
     "sober": 0.8,
     "parents_wc": 0.65,
-    "dad_kokkari": 0.9,
+    "dad_kokkari": 0.89,
     "sam_bday_nopa": 0.55,
-    "dad_70": 0.91
+    "dad_70": 0.9
    },
-   "latencyMs": 321.57887499999924,
-   "costUsd": 0.00043617,
-   "inputTokens": 10385,
+   "latencyMs": 370.2896669999973,
+   "costUsd": 0.000436254,
+   "inputTokens": 10387,
    "outputTokens": 4526
+  },
+  "embeddings": {
+   "ids": [
+    "dad_70",
+    "offsite_dinner",
+    "sam_bday_nopa",
+    "dad_kokkari",
+    "party_guests"
+   ],
+   "latencyMs": 250.02366699999766,
+   "costUsd": 0.0000036400000000000003,
+   "inputTokens": 28,
+   "outputTokens": 0
   },
   "sonnet": {
    "ids": [
     "dad_stent",
     "mom_wheelchair",
-    "dad_kokkari",
     "dad_70",
+    "dad_kokkari",
+    "parents_wc",
     "budget_flag",
-    "sober",
-    "parents_wc"
+    "house_closing",
+    "sober"
    ],
-   "latencyMs": 8792.463083000002,
-   "costUsd": 0.021112,
-   "inputTokens": 7236,
-   "outputTokens": 664
+   "latencyMs": 10199.006958999998,
+   "costUsd": 0.02253,
+   "inputTokens": 7235,
+   "outputTokens": 806
   }
  },
  "belize_dive": {
   "recordedAt": "2026-09-19",
+  "jev": {
+   "ids": [
+    "belize_dates",
+    "seasick",
+    "dive_cert",
+    "sam_anniv",
+    "pregnant",
+    "dramamine_brand",
+    "belize_blue_hole",
+    "budget_flag",
+    "biscuit_boarding",
+    "biscuit_anxiety",
+    "amex",
+    "vitamins",
+    "mom_wheelchair",
+    "card_stolen",
+    "hotel_pref"
+   ],
+   "scores": {
+    "mom_wheelchair": 0.54,
+    "pregnant": 0.82,
+    "biscuit_anxiety": 0.61,
+    "budget_flag": 0.7,
+    "card_stolen": 0.51,
+    "dive_cert": 0.84,
+    "belize_dates": 0.93,
+    "seasick": 0.89,
+    "belize_blue_hole": 0.74,
+    "dramamine_brand": 0.79,
+    "sam_anniv": 0.84,
+    "amex": 0.61,
+    "hotel_pref": 0.51,
+    "biscuit_boarding": 0.67,
+    "vitamins": 0.6
+   },
+   "latencyMs": 352.64179100000183,
+   "costUsd": 0.0004356660000000001,
+   "inputTokens": 10373,
+   "outputTokens": 4526
+  },
   "embeddings": {
    "ids": [
     "belize_dates",
@@ -111,50 +147,10 @@
     "maya_visit",
     "travel_mexico"
    ],
-   "latencyMs": 180.64829199999804,
+   "latencyMs": 566.6744580000013,
    "costUsd": 0.0000018200000000000002,
    "inputTokens": 14,
    "outputTokens": 0
-  },
-  "jev": {
-   "ids": [
-    "belize_dates",
-    "seasick",
-    "dive_cert",
-    "pregnant",
-    "sam_anniv",
-    "dramamine_brand",
-    "budget_flag",
-    "belize_blue_hole",
-    "biscuit_boarding",
-    "amex",
-    "biscuit_anxiety",
-    "vitamins",
-    "card_stolen",
-    "hotel_pref",
-    "mom_wheelchair"
-   ],
-   "scores": {
-    "mom_wheelchair": 0.53,
-    "pregnant": 0.83,
-    "biscuit_anxiety": 0.59,
-    "budget_flag": 0.74,
-    "card_stolen": 0.57,
-    "dive_cert": 0.87,
-    "belize_dates": 0.93,
-    "seasick": 0.9,
-    "belize_blue_hole": 0.72,
-    "dramamine_brand": 0.8,
-    "sam_anniv": 0.81,
-    "amex": 0.65,
-    "hotel_pref": 0.55,
-    "biscuit_boarding": 0.66,
-    "vitamins": 0.58
-   },
-   "latencyMs": 336.3340840000019,
-   "costUsd": 0.00043558200000000006,
-   "inputTokens": 10371,
-   "outputTokens": 4526
   },
   "sonnet": {
    "ids": [
@@ -166,47 +162,17 @@
     "belize_blue_hole",
     "pregnant",
     "budget_flag",
-    "house_closing",
+    "card_stolen",
     "amex"
    ],
-   "latencyMs": 7694.196833000009,
-   "costUsd": 0.02065,
-   "inputTokens": 7215,
-   "outputTokens": 622
+   "latencyMs": 9425.254125000007,
+   "costUsd": 0.022908,
+   "inputTokens": 7214,
+   "outputTokens": 848
   }
  },
  "tahoe_sunday": {
   "recordedAt": "2026-09-19",
-  "jev": {
-   "ids": [
-    "biscuit_anxiety",
-    "car_shop",
-    "mom_wheelchair",
-    "timezone",
-    "subaru",
-    "sober",
-    "tahoe_cabin",
-    "palisades",
-    "farmers_market",
-    "babysitter"
-   ],
-   "scores": {
-    "mom_wheelchair": 0.68,
-    "biscuit_anxiety": 0.81,
-    "car_shop": 0.72,
-    "sober": 0.61,
-    "palisades": 0.55,
-    "tahoe_cabin": 0.61,
-    "farmers_market": 0.54,
-    "subaru": 0.65,
-    "timezone": 0.68,
-    "babysitter": 0.51
-   },
-   "latencyMs": 296.8981669999921,
-   "costUsd": 0.000435792,
-   "inputTokens": 10376,
-   "outputTokens": 4526
-  },
   "embeddings": {
    "ids": [
     "farmers_market",
@@ -215,27 +181,63 @@
     "belize_dates",
     "work_travel"
    ],
-   "latencyMs": 365.2027080000116,
+   "latencyMs": 276.0229580000014,
    "costUsd": 0.0000026,
    "inputTokens": 20,
    "outputTokens": 0
   },
+  "jev": {
+   "ids": [
+    "biscuit_anxiety",
+    "car_shop",
+    "mom_wheelchair",
+    "tahoe_cabin",
+    "timezone",
+    "sober",
+    "subaru",
+    "farmers_market",
+    "airbnb_pref",
+    "palisades",
+    "babysitter",
+    "budget_flag",
+    "biscuit_boarding"
+   ],
+   "scores": {
+    "mom_wheelchair": 0.73,
+    "biscuit_anxiety": 0.83,
+    "budget_flag": 0.51,
+    "car_shop": 0.78,
+    "sober": 0.64,
+    "palisades": 0.52,
+    "tahoe_cabin": 0.67,
+    "farmers_market": 0.54,
+    "subaru": 0.61,
+    "airbnb_pref": 0.54,
+    "timezone": 0.66,
+    "babysitter": 0.52,
+    "biscuit_boarding": 0.51
+   },
+   "latencyMs": 324.19045899999037,
+   "costUsd": 0.000435876,
+   "inputTokens": 10378,
+   "outputTokens": 4526
+  },
   "sonnet": {
    "ids": [
     "car_shop",
-    "car_rental",
-    "budget_flag",
+    "subaru",
     "biscuit_anxiety",
     "biscuit_walker",
     "biscuit_boarding",
+    "budget_flag",
+    "car_rental",
     "farmers_market",
-    "groceries",
     "plants"
    ],
-   "latencyMs": 17339.568666000006,
-   "costUsd": 0.030306,
-   "inputTokens": 7223,
-   "outputTokens": 1586
+   "latencyMs": 15543.263249999989,
+   "costUsd": 0.027834,
+   "inputTokens": 7222,
+   "outputTokens": 1339
   }
  }
 }

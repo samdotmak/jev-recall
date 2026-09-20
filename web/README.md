@@ -1,8 +1,10 @@
 # Jev Recall demo
 
-A single-page demo: an assistant knows 238 things about your life, and three systems pick which
-ones it should read before acting. Semantic search (OpenAI embeddings), an LLM judge
-(Claude Sonnet 5) and Jev Recall run side by side.
+Three methods race across one shared grid of all 238 memories: semantic search (OpenAI
+embeddings), Claude Sonnet 5 as an LLM judge, and Jev Recall. Each scanner settles on what its
+method picked, and a method that misses the memory that mattered says so.
+
+Live at https://jev-recall.vercel.app
 
 ```bash
 pnpm install

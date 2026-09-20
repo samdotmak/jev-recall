@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "motion/react";
+import { useState } from "react";
 import { METHOD_COLOR } from "@/lib/format";
 import { SYSTEMS, type Memory, type SystemId } from "@/lib/types";
 
@@ -38,6 +38,7 @@ export function ScanField({
   elapsedMs: number;
   running: boolean;
 }) {
+  const [hover, setHover] = useState<number | null>(null);
   const index = Object.fromEntries(memories.map((m, i) => [m.id, i]));
   const rows = Math.ceil(memories.length / COLS);
   const width = (COLS - 1) * PITCH + CELL;
@@ -53,29 +54,26 @@ export function ScanField({
     for (const id of scans[s.id].picks) (pickedBy[id] ??= []).push(s.id);
   }
 
+  const hovered = hover !== null ? memories[hover] : null;
+  const hoverPos = hover !== null ? cellXY(hover) : null;
+
   return (
-    <div className="flex h-full flex-col rounded-2xl border border-line bg-panel px-8 pb-7 pt-6">
+    <div className="flex h-full flex-col rounded-xl border border-line bg-panel px-8 pb-7 pt-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <span className="text-[21px] text-text">{headline}</span>
-          <span className="h-2 w-2 rounded-full bg-[#d8dce3]" />
-          <span className="tabular font-mono text-[24px] font-semibold text-text">{(elapsedMs / 1000).toFixed(2)}s</span>
-          {running && (
-            <motion.span
-              className="h-2 w-2 rounded-full bg-jev"
-              animate={{ opacity: [1, 0.2, 1] }}
-              transition={{ repeat: Infinity, duration: 0.9 }}
-            />
-          )}
+          <span className="text-[22px] text-text">{headline}</span>
+          <span className="h-1.5 w-1.5 rounded-full bg-faint" />
+          <span className="tabular text-[23px] text-text">{(elapsedMs / 1000).toFixed(2)}s</span>
+          {running && <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-jev" />}
         </div>
-        <div className="flex items-center gap-2 text-[14px] text-faint">
+        <div className="label flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-[3px] bg-cell" />
           Each square is a memory
         </div>
       </div>
 
       <div className="flex flex-1 items-center justify-center">
-        <div className="relative" style={{ width, height }}>
+        <div className="relative" style={{ width, height }} onMouseLeave={() => setHover(null)}>
           {/* cells */}
           {memories.map((m, i) => {
             const { x, y } = cellXY(i);
@@ -83,15 +81,19 @@ export function ScanField({
             return (
               <div
                 key={m.id}
-                title={m.text}
-                className="absolute rounded-[6px] transition-colors duration-500"
+                onMouseEnter={() => setHover(i)}
+                className="absolute rounded-[6px] transition-colors duration-300 hover:brightness-95"
                 style={{
                   left: x,
                   top: y,
                   width: CELL,
                   height: CELL,
-                  background: isKey ? "#fff" : "var(--cell)",
-                  boxShadow: isKey ? "0 0 0 2px var(--text)" : undefined,
+                  background: isKey ? "var(--panel)" : "var(--cell)",
+                  boxShadow: isKey
+                    ? "0 0 0 2px var(--accent), 0 0 12px color-mix(in srgb, var(--accent) 40%, transparent)"
+                    : hover === i
+                      ? "0 0 0 2px var(--faint)"
+                      : undefined,
                 }}
               >
                 {pickedBy[m.id] && (
@@ -117,9 +119,9 @@ export function ScanField({
             const scan = scans[id];
             if (scan.status === "idle") return null;
             const color = METHOD_COLOR[id];
-            let pos: { x: number; y: number };
-            let col = 0;
             const sweeping = scan.status === "running";
+            let pos: { x: number; y: number } | null;
+            let col = 0;
             if (sweeping) {
               const p = Math.floor((scan.elapsedMs / 1000) * SWEEP_CELLS_PER_SEC) + START_ROW[id] * COLS;
               const cell = p % memories.length;
@@ -127,9 +129,10 @@ export function ScanField({
               col = cell % COLS;
             } else {
               const t = scan.target !== undefined ? index[scan.target] : undefined;
-              pos = t !== undefined ? cellXY(t) : { x: -999, y: -999 };
+              pos = t !== undefined ? cellXY(t) : null;
             }
-            // Two scanners can settle on the same memory; nest them so both stay visible.
+            if (!pos) return null;
+            // Two scanners can settle on the same memory; nest one inside the other.
             const inset = !sweeping && id === "sonnet" && scans.jev.target === scan.target ? -5 : 0;
             return (
               <div key={id}>
@@ -141,51 +144,62 @@ export function ScanField({
                       left: Math.max(0, col - TRAIL) * PITCH,
                       width: Math.min(col, TRAIL) * PITCH + CELL,
                       height: CELL,
-                      background: `linear-gradient(90deg, transparent, color-mix(in srgb, ${color} 28%, transparent))`,
+                      background: `linear-gradient(90deg, transparent, color-mix(in srgb, ${color} 30%, transparent))`,
                     }}
                   />
                 )}
-                {pos.x > -999 && (
-                  <motion.div
-                    className="pointer-events-none absolute rounded-[8px] border-[3px]"
-                    initial={false}
-                    animate={{ x: pos.x - 4 + inset, y: pos.y - 4 + inset }}
-                    transition={sweeping ? { duration: 0 } : { type: "spring", stiffness: 140, damping: 18 }}
-                    style={{
-                      width: CELL + 8 - inset * 2,
-                      height: CELL + 8 - inset * 2,
-                      borderColor: color,
-                      background: inset ? "transparent" : `color-mix(in srgb, ${color} 22%, transparent)`,
-                      boxShadow: `0 0 16px color-mix(in srgb, ${color} 45%, transparent)`,
-                      zIndex: id === "jev" ? 3 : 2,
-                    }}
-                  />
-                )}
+                <div
+                  className="pointer-events-none absolute left-0 top-0 rounded-[8px] border-[3px]"
+                  style={{
+                    transform: `translate3d(${pos.x - 4 + inset}px, ${pos.y - 4 + inset}px, 0)`,
+                    transition: sweeping ? "none" : "transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1)",
+                    width: CELL + 8 - inset * 2,
+                    height: CELL + 8 - inset * 2,
+                    borderColor: color,
+                    background: inset ? "transparent" : `color-mix(in srgb, ${color} 20%, transparent)`,
+                    boxShadow: `0 0 14px color-mix(in srgb, ${color} 40%, transparent)`,
+                    zIndex: id === "jev" ? 3 : 2,
+                  }}
+                />
               </div>
             );
           })}
 
+          {/* hover readout */}
+          {hovered && hoverPos && (
+            <div
+              className="pointer-events-none absolute z-20 max-w-[420px] rounded-lg border border-line bg-panel px-3 py-2 text-[14px] leading-snug text-text shadow-[0_8px_24px_rgba(22,21,15,0.14)]"
+              style={{
+                left: Math.min(Math.max(hoverPos.x + CELL / 2, 210), width - 210),
+                top: hoverPos.y > 70 ? hoverPos.y - 12 : hoverPos.y + CELL + 12,
+                transform: `translate(-50%, ${hoverPos.y > 70 ? "-100%" : "0"})`,
+              }}
+            >
+              {hovered.text}
+            </div>
+          )}
+
           {/* the memory that matters, labeled once every method has reported */}
           {reveal &&
+            !hovered &&
             (() => {
               const i = index[keyIds[0]];
               if (i === undefined) return null;
               const { x, y } = cellXY(i);
               const above = y > 60;
               return (
-                <motion.div
-                  initial={{ opacity: 0, y: above ? 6 : -6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="absolute z-10 whitespace-nowrap rounded-lg bg-text px-3 py-1.5 text-[14px] font-medium text-white shadow-lg"
+                <div
+                  className="fade-up absolute z-10 whitespace-nowrap rounded-lg border border-accent/30 bg-accent/12 px-3 py-1.5 text-[15px] text-accent shadow-[0_6px_18px_rgba(22,21,15,0.10)]"
                   style={{
+                    animationDelay: "450ms",
                     left: Math.min(Math.max(x + CELL / 2, 120), width - 120),
                     top: above ? y - 46 : y + CELL + 14,
-                    x: "-50%",
+                    marginLeft: "-0.5px",
+                    transform: "translateX(-50%)",
                   }}
                 >
                   {keyLabel.charAt(0).toUpperCase() + keyLabel.slice(1)}
-                </motion.div>
+                </div>
               );
             })()}
         </div>
