@@ -2,7 +2,7 @@
 
 **Retrieve by relevance, not resemblance.** 
 
-Jev Recall gives you LLM re-ranker quality at semantic search prices and speed 
+Jev Recall gives you LLM re-ranker quality retreival at semantic search prices and speed 
 
 Given a user query and a pile of memories, jev recalls returns the most relevant memories, judged by
 [TypeSafe's Jev](https://typesafe.ai) model, one calibrated yes/no per memory, in a single request.
