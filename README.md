@@ -1,8 +1,10 @@
 # Jev Recall
 
-**Retrieve by relevance, not resemblance.**
+**Retrieve by relevance, not resemblance.** 
 
-Give it a situation and a pile of memories. It returns only the memories that matter, judged by
+Jev Recall gives you LLM re-ranker quality at semantic search prices and speed 
+
+Given a user query and a pile of memories, jev recalls returns the most relevant memories, judged by
 [TypeSafe's Jev](https://typesafe.ai) model, one calibrated yes/no per memory, in a single request.
 
 <!-- TODO: replace with the recorded demo GIF -->
@@ -10,11 +12,11 @@ Give it a situation and a pile of memories. It returns only the memories that ma
 
 **[Try the live demo →](https://jev-recall.vercel.app)** · replays real runs, or runs live with your own API keys.
 
-## The problem
+## Why?
 
 With LLMs, writing memories is easy. Knowing which ones to *retrieve* is the hard part.
 
-Today you get two options, and both make you guess in advance:
+Today you get two options that don't work because:
 
 - **Keyword search** works only if you already know what you're looking for.
 - **Semantic search** works only if the memory that matters happens to look like the request.
